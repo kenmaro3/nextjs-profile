@@ -17,7 +17,7 @@ const Header = () => (
     </div>
     <div className={tw(`max-w-4xl mx-auto py-16 px-14 sm:px-6 lg:px-8`)}>
       <h2 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800`)}>
-        我作る故に我有り
+        我プログラムする故に我有り
       </h2>
       {/* <div className={tw(`mt-10 flex justify-center items-center w-full mx-auto`)}>
         <Button primary>Get started</Button>
