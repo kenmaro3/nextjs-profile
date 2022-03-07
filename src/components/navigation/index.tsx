@@ -13,22 +13,22 @@ type Link = {
 };
 
 const links = [
-  {
-    label: `Features`,
-    href: `/`,
-  },
-  {
-    label: `Testimonials`,
-    href: `/`,
-  },
-  {
-    label: `Pricing`,
-    href: `/`,
-  },
-  {
-    label: `Blog`,
-    href: `/`,
-  },
+  // {
+  //   label: `Features`,
+  //   href: `/`,
+  // },
+  // {
+  //   label: `Testimonials`,
+  //   href: `/`,
+  // },
+  // {
+  //   label: `Pricing`,
+  //   href: `/`,
+  // },
+  // {
+  //   label: `Blog`,
+  //   href: `/`,
+  // },
 ];
 
 const secondaryLinks = [
@@ -37,13 +37,13 @@ const secondaryLinks = [
     href: `/`,
   },
   {
-    label: `Log in`,
+    label: `About`,
     href: `/`,
   },
-  {
-    label: `Get Started`,
-    href: `/`,
-  },
+  // {
+  //   label: `Get Started`,
+  //   href: `/`,
+  // },
 ];
 
 const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
@@ -120,11 +120,11 @@ const Navigation = () => {
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
-              <img className={tw(`h-12 w-12`)} src="logo.svg" alt="logo" width={48} height={48} />
+              <img className={tw(`h-12 w-12`)} src="images/coding.png" alt="logo" width={48} height={48} />
             </div>
             <div className={tw(`hidden md:block`)}>
               <div className={tw(`ml-10 flex items-baseline space-x-4`)}>
-                {links.map((link: Link) => (
+                {/* {links.map((link: Link) => (
                   <a
                     key={link.label}
                     href={link.href}
@@ -132,15 +132,17 @@ const Navigation = () => {
                   >
                     {link.label}
                   </a>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
           <div className={tw(`hidden md:block`)}>
             <div className={tw(`ml-4 flex items-center md:ml-6`)}>
-              <Button modifier="border-0 mr-2">Contact sales</Button>
-              <Button modifier="border-0 mr-2">Log in</Button>
-              <Button primary>Get started</Button>
+              <Button modifier="border-0 mr-2">Home</Button>
+              <Button modifier="border-0 mr-2">Blog</Button>
+              <Button modifier="border-0 mr-2">SNS</Button>
+              <Button modifier="border-0 mr-2">About</Button>
+              {/* <Button primary>Get started</Button> */}
             </div>
           </div>
           <div className={tw(`-mr-2 flex md:hidden`)}>
