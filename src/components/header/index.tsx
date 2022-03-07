@@ -27,9 +27,7 @@ const Header = () => (
     </div>
     <div className={tw(`h-auto flex justify-center w-full`)}>
       <div className={tw(`mt-4 w-full`)}>
-        <p className={tw(`font-mono uppercase text-center font-medium text-sm text-gray-600`)}>
-          Lead Developper of ...
-        </p>
+        <p className={tw(`font-mono uppercase text-center font-medium text-sm text-gray-600`)}>Lead Developer of ...</p>
         <div className={tw(`flex items-center justify-center mx-auto flex-wrap`)}>
           {/* <Aws className={tw(`m-12 mb-8`)} width={120} />
           <Netlify className={tw(`m-12`)} width={140} />
