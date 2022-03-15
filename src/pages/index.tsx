@@ -18,8 +18,8 @@ export default function Home() {
       <main>
         {/* <VideoSection /> */}
         <ListSection />
-        <FeatureSection />
         <CasesSection />
+        <FeatureSection />
         {/* <SocialProof /> */}
         {/* <PricingTable /> */}
       </main>

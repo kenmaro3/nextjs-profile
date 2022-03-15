@@ -18,71 +18,64 @@ const resourceLinks = [
 ];
 
 const Footer = () => (
-  <footer className={tw(`bg-gray-50 pt-14 pb-20 flex `)}>
-    <div className={tw(`max-w-7xl mx-auto text-gray-400 px-8 lg:px-0 flex flex-wrap`)}>
-      <div className={tw(`mb-14 flex items-center w-full`)}>
-        <img className={tw(`h-12 w-12 mr-4`)} src="images/coding.png" alt="logo" width={48} height={48} />
-        <p className={tw(`text-2xl text-indigo-500 font-bold`)}>Social Media</p>
-      </div>
-      <div className={tw(`w-full `)}>
-        <ul className={tw(`text-lg font-light flex flex-wrap w-full`)}>
-          <li className={tw(`w-1/2 md:w-1/3 lg:w-1/3`)}>
-            <div>
-              <h4 className={tw(`text-gray-900 text-base font-bold mb-1`)}>Twitter</h4>
-              <AiFillTwitterCircle size={40} color="#00acee" />
-              <ul>
-                {/* {productLinks.map((link) => (
-                  <li className={tw(`text-gray-800 text-sm font-medium leading-6`)} key={link}>
-                    <a href="/">{link}</a>
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-          </li>
-          <li className={tw(`w-1/2 md:w-1/3 lg:w-1/3`)}>
-            <div>
-              <h4 className={tw(`text-gray-900 text-base font-bold mb-1`)}>Github</h4>
-              <FaGithub size={40} color="#4078c0" />
-              <ul>
-                {/* {resourceLinks.map((link) => (
-                  <li className={tw(`text-gray-800 text-sm font-medium leading-6`)} key={link}>
-                    <a href="/">{link}</a>
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-          </li>
-          <li className={tw(`w-1/2 md:w-1/3 lg:w-1/3`)}>
-            <div>
-              <h4 className={tw(`text-gray-900 text-base font-bold mb-1`)}>Youtube</h4>
-              <AiFillYoutube size={40} color="#c4302b" />
-              <ul>
-                {/* {aboutLinks.map((link) => (
-                  <li className={tw(`text-gray-800 text-sm font-medium leading-6`)} key={link}>
-                    <a href="/">{link}</a>
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-      {/* <div className={tw(`w-full lg:w-1/2 mt-12 lg:mt-0`)}>
-        <div className={tw(`border border-gray-400 rounded py-5 px-4`)}>
-          <h4 className={tw(`font-mono text-sm uppercase text-gray-500 mb-3`)}>Subscribe our newsletter</h4>
-          <div className={tw(`flex w-full`)}>
-            <input
-              aria-label="email address"
-              type="text"
-              className={tw(`border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`)}
-              placeholder="Enter your email"
-            />
-            <Button>Subscribe</Button>
-          </div>
-        </div>
-      </div> */}
+  <section className={tw(`bg-gray-50 lg:py-20 pt-14 overflow-hidden`)}>
+    <div className={tw(`mb-2 text-center`)}>
+      <h2 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>
+        Social Media
+      </h2>
+      {/* <p className={tw(`mt-2 pb-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`)}>
+          Transform your business
+        </p> */}
     </div>
-  </footer>
+    <div className={tw(`flex flex-wrap -mx-8 items-center justify-center`)}>
+      <div className={tw(`flex items-center justify-center mx-auto flex-wrap`)}>
+        {/* <Aws className={tw(`m-12 mb-8`)} width={120} />
+            <Netlify className={tw(`m-12`)} width={140} />
+            <Nike className={tw(`m-12`)} width={140} />
+            <Figma className={tw(`m-12`)} width={140} /> */}
+        <div className={tw(`p-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}>
+          <a href="https://twitter.com/kenmaro4" target="_blank" rel="noopener noreferrer">
+            <div className={tw(`flex flex-col items-center`)}>
+              <AiFillTwitterCircle size={40} color="#00acee" />
+              <div className={tw(`pt-4 font-medium`)}>Twitter</div>
+            </div>
+          </a>
+        </div>
+        <div className={tw(`p-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}>
+          <a href="https://github.com/kenmaro3" target="_blank" rel="noopener noreferrer">
+            <div className={tw(`flex flex-col items-center`)}>
+              <FaGithub size={40} color="#4078c0" />
+              <div className={tw(`pt-4 font-medium`)}>Github</div>
+            </div>
+          </a>
+        </div>
+        <div className={tw(`p-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}>
+          <a href="https://www.youtube.com/channel/UC6HgW2HTs720RPnohL1L-uQ" target="_blank" rel="noopener noreferrer">
+            <div className={tw(`flex flex-col items-center`)}>
+              <AiFillYoutube size={40} color="#c4302b" />
+              <div className={tw(`pt-4 font-medium`)}>Youtube</div>
+            </div>
+          </a>
+        </div>
+        <div className={tw(`p-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}>
+          <a href="https://qiita.com/kenmaro" target="_blank" rel="noopener noreferrer">
+            <div className={tw(`flex flex-col items-center`)}>
+              <img src="/images/qiita-logo.png" alt="qiita_logo" width="40px" />
+              <div className={tw(`pt-4 font-medium`)}>Qiita</div>
+            </div>
+          </a>
+        </div>
+        <div className={tw(`p-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}>
+          <a href="https://note.com/kenmaro" target="_blank" rel="noopener noreferrer">
+            <div className={tw(`flex flex-col items-center`)}>
+              <img src="/images/note-logo.png" alt="note_logo" width="60px" />
+              <div className={tw(`pt-4 font-medium`)}>note</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 );
 
 export default Footer;

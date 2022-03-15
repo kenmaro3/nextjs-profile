@@ -3,7 +3,7 @@ import FeatureSvg from '@/constants/svg/features.svg';
 
 const listItems = [
   {
-    title: `Secure Computing`,
+    title: `Secure Computing Developer`,
     description: `秘密計算技術の社会応用について取り組んでいます。
     `,
   },
@@ -13,8 +13,8 @@ const listItems = [
     `,
   },
   {
-    title: `Hackathon`,
-    description: `ハッカソンを通じていろんな技術をアウトプットしています。
+    title: `Blog / Hackathon Lover`,
+    description: `ブログや、ハッカソンを通じていろんな技術をアウトプットしています。
     `,
   },
 ];
@@ -23,7 +23,9 @@ const ListSection = () => (
   <section className={tw(`lg:py-28 pt-28 overflow-hidden`)}>
     <div className={tw(`max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 bg-white`)}>
       <div className={tw(`mb-16 text-center`)}>
-        <h2 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>About</h2>
+        <h2 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>
+          Who I am in 3 Lines
+        </h2>
         {/* <p className={tw(`mt-2 pb-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`)}>
           Transform your business
         </p> */}

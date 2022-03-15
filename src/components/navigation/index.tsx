@@ -33,12 +33,12 @@ type Link = {
 
 const secondaryLinks = [
   {
-    label: `Contact sales`,
+    label: `Home`,
     href: `/`,
   },
   {
     label: `About`,
-    href: `/`,
+    href: `/about`,
   },
   // {
   //   label: `Get Started`,
@@ -120,7 +120,9 @@ const Navigation = () => {
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
-              <img className={tw(`h-12 w-12`)} src="images/coding.png" alt="logo" width={48} height={48} />
+              <a href="/">
+                <img className={tw(`h-12 w-12`)} src="images/coding.png" alt="logo" width={48} height={48} />
+              </a>
             </div>
             <div className={tw(`hidden md:block`)}>
               <div className={tw(`ml-10 flex items-baseline space-x-4`)}>
@@ -138,10 +140,12 @@ const Navigation = () => {
           </div>
           <div className={tw(`hidden md:block`)}>
             <div className={tw(`ml-4 flex items-center md:ml-6`)}>
-              <Button modifier="border-0 mr-2">Home</Button>
-              <Button modifier="border-0 mr-2">Blog</Button>
-              <Button modifier="border-0 mr-2">SNS</Button>
-              <Button modifier="border-0 mr-2">About</Button>
+              <Button modifier="border-0 mr-2" link="/">
+                Home
+              </Button>
+              <Button modifier="border-0 mr-2" link="about">
+                About
+              </Button>
               {/* <Button primary>Get started</Button> */}
             </div>
           </div>
