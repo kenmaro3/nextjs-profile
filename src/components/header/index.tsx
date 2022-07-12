@@ -33,9 +33,21 @@ const Header = () => (
           <Netlify className={tw(`m-12`)} width={140} />
           <Nike className={tw(`m-12`)} width={140} />
           <Figma className={tw(`m-12`)} width={140} /> */}
-          <div className={tw(`max-w-xl mx-auto`)}>
-            <p className={tw(`mt-10 text-gray-500 text-center text-xl lg:text-2xl hover:scale-105`)}>
+          <div className={tw(`flex items-center justify-center max-w-xl mx-auto`)}>
+            <p
+              className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
+            >
               <a href="https://apps.apple.com/jp/app/yorimichiapp/id1596625712">YorimichiApp</a>
+            </p>
+            <p
+              className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
+            >
+              <a href="https://protohub.tech">Protohub</a>
+            </p>
+            <p
+              className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
+            >
+              <a href="https://diving-ikungo.com">ダイビングイクンゴ</a>
             </p>
           </div>
         </div>
