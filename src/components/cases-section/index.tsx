@@ -51,6 +51,7 @@ const articles = [
     desc1: `マップとSNSの融合により`,
     desc2: `より未知な寄り道へ、寄り道でより未知へ`,
     desc3: `あなたを導きます。`,
+    link: `https://apps.apple.com/jp/app/yorimichiapp/id1596625712`,
   },
   {
     title: `Protohub`,
@@ -59,6 +60,7 @@ const articles = [
     desc1: `プロトタイプ作りを行う`,
     desc2: `エンジニアを対象とした`,
     desc3: `ブログプラットフォームはこちら`,
+    link: `https://protohub.tech`,
   },
   {
     title: `ダイビングイクンゴ`,
@@ -67,6 +69,7 @@ const articles = [
     desc1: `ダイビングが好きな`,
     desc2: `人たちを対象とした`,
     desc3: `ダイビングスポットの口コミサイト`,
+    link: `https://diving-ikungo.com`,
   },
   // {
   //   title: `Velit reprehenderit culpa Lorem reprehenderit ipsum esse.`,
@@ -99,7 +102,7 @@ const CasesSection = () => (
                       xl:max-w-sm lg:w-1/2 w-11/12 mx-auto sm:mx-0 cursor-pointer hover:scale-105`,
                 )}
               >
-                <a href="https://apps.apple.com/jp/app/yorimichiapp/id1596625712">
+                <a href={article.link}>
                   <div className={tw(`h-64 z-20`)}>
                     <img
                       src={article.image}
