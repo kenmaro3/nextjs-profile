@@ -9,7 +9,11 @@ interface IProps {
 const Page = ({ children }: IProps) => (
   <div>
     <Head>
-      <link rel="icon" href="/images/coding.png" />
+      <link
+        rel="icon"
+        className={tw(`rounded-full`)}
+        href="https://pbs.twimg.com/profile_images/1646290921103962113/pCinLyv5_400x400.jpg"
+      />
     </Head>
     <div className={tw(`min-h-screen flex flex-col`)}>
       <Navigation />

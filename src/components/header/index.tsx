@@ -17,7 +17,14 @@ const Header = () => (
     </div>
     <div className={tw(`max-w-4xl mx-auto py-16 px-14 sm:px-6 lg:px-8`)}>
       <h2 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800`)}>
-        我プログラムする故に我有り
+        ねだるな、勝ち取れ
+      </h2>
+      <h2
+        className={tw(
+          `font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800 mt-10`,
+        )}
+      >
+        さすれば与えられん
       </h2>
       {/* <div className={tw(`mt-10 flex justify-center items-center w-full mx-auto`)}>
         <Button primary>Get started</Button>
@@ -37,6 +44,13 @@ const Header = () => (
             <p
               className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
             >
+              <a href="https://liff.line.me/1645278921-kWRPP32q/904siiki/profile/img?accountId=904siiki">
+                Nomikai-Kanji
+              </a>
+            </p>
+            <p
+              className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
+            >
               <a href="https://apps.apple.com/jp/app/yorimichiapp/id1596625712">YorimichiApp</a>
             </p>
             <p
@@ -47,7 +61,7 @@ const Header = () => (
             <p
               className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
             >
-              <a href="https://diving-ikungo.com">ダイビングイクンゴ</a>
+              <a href="https://diving-ikungo.com">Diving-Ikungo</a>
             </p>
           </div>
         </div>

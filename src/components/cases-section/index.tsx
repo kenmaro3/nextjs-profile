@@ -45,7 +45,16 @@ const ParticleBg = () => (
 
 const articles = [
   {
-    title: `iOS App`,
+    title: `ノミカイカンジ`,
+    image: `https://image.brush-stock.com/img/vewoev000026.jpg`,
+    alt: `nomikai_kanji_logo`,
+    desc1: `ラインでの飲み会開催を主催する`,
+    desc2: `幹事のあなたをサポートします。`,
+    desc3: `ノミカイカンジでノミタイカンジ。`,
+    link: `https://liff.line.me/1645278921-kWRPP32q/904siiki/profile/img?accountId=904siiki`,
+  },
+  {
+    title: `Yorimichi (iOS/Android)`,
     image: `https://uploads-ssl.webflow.com/616910d261f7ebc4a0e18759/61691112600952ed705e66d1_yorimichi1.png`,
     alt: `yorimichi_logo`,
     desc1: `マップとSNSの融合により`,
@@ -98,7 +107,7 @@ const CasesSection = () => (
               <div
                 key={article.title}
                 className={tw(
-                  `xl:w-1/3 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20
+                  `xl:w-1/4 sm:w-5/12 sm:max-w-xs relative mb-32 lg:mb-20 p-2
                       xl:max-w-sm lg:w-1/2 w-11/12 mx-auto sm:mx-0 cursor-pointer hover:scale-105`,
                 )}
               >

@@ -17,14 +17,19 @@ const listItems = [
     description: `ブログや、ハッカソンを通じていろんな技術をアウトプットしています。
     `,
   },
+  {
+    title: `Challenging New Things`,
+    description: `自分のやりたいことに制限を設けず、日々チャレンジしています。
+    `,
+  },
 ];
 
 const ListSection = () => (
-  <section className={tw(`lg:py-28 pt-28 overflow-hidden`)}>
+  <section className={tw(`lg:py-14 pt-20 overflow-hidden`)}>
     <div className={tw(`max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 bg-white`)}>
       <div className={tw(`mb-16 text-center`)}>
         <h2 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>
-          Who I am in 3 Lines
+          Who I am in 4 Lines
         </h2>
         {/* <p className={tw(`mt-2 pb-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`)}>
           Transform your business
@@ -54,7 +59,19 @@ const ListSection = () => (
         </div>
         <div className={tw(`w-full lg:w-1/2 px-8`)}>
           <div className={tw(`lg:mb-12 lg:mb-0 pb-12 lg:pb-0 mt-16 lg:mt-0 mx-6 lg:mx-0`)}>
-            <img src="/images/programming.jpg" alt="programming_picture" width="100%" />
+            <img
+              src="https://pbs.twimg.com/media/FdiVIk1aIAEmzzg?format=jpg&name=large"
+              alt="programming_picture"
+              width="100%"
+            />
+            <div className={tw(`mb-16 text-center`)}>
+              <h4 className={tw(`mt-2 lg:text-xl font-semibold text-gray-500 text-base tracking-wide`)}>
+                Blenderで家のモデリングをした時の作品
+              </h4>
+              {/* <p className={tw(`mt-2 pb-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`)}>
+          Transform your business
+        </p> */}
+            </div>
           </div>
         </div>
       </div>

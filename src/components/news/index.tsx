@@ -31,19 +31,16 @@ const News = () => (
               <div className={tw(`ml-4 text-xl`)}>Interview</div>
             </div>
             <p className={tw(`leading-loose text-gray-500`)}>
-              <a href="https://www.mapbox.jp/blog/digitalhackday-interview02" target="_blank" rel="noopener noreferrer">
+              <a href="https://arxiv.org/abs/2012.13552" target="_blank" rel="noopener noreferrer">
                 <img
-                  src="https://assets.website-files.com/5f8ddf03fc2e2a37e95f7124/617e9b6cf744d54f8e775675_jPQDn-3d9m1DGCNeqSp02bLfdfChYO86aykd3ANGMjuNXr0eBLQvjpBB7sbkV9gOM8VuCRV63dGjHpCUyJg4s8fzyIDHDAI6TbzM-YodJIZ_j4k8L0T2B6nq0Dv8tUk7sK_fCrHN.jpeg"
+                  src="https://thumb.ac-illust.com/38/383f761353919dd2f1216cded23942a2_t.jpeg"
                   loading="lazy"
                   width="250"
                   alt="Qiita＠ Kenmaro"
                 />
-                <div>2021-11-02</div>
-                <h4>
-                  インタビュー】ハッカソン予選チーム！チームあぐりメタルの寄り道ナビゲーションアプリ｜Digital Hack day
-                  2021 レポート
-                </h4>
-                <div>Interview</div>
+                <div>2020-12-25</div>
+                <h4>Neural Network Training With Homomorphic Encryption</h4>
+                <div>Technical Paper</div>
               </a>
             </p>
           </div>

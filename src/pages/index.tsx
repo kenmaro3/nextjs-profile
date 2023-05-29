@@ -8,13 +8,16 @@ import CasesSection from '@/components/cases-section';
 import SocialProof from '@/components/social-proof';
 import PricingTable from '@/components/pricing-table';
 import Footer from '@/components/footer';
+import About from '@/components/about';
+import News from '@/components/news';
 
 export default function Home() {
   return (
     <Page>
       <NextSeo title="kenmaro" description="kenmaro's engineer portfolio" />
       <Header />
-      <Footer />
+      <About />
+      <News />
       <main>
         {/* <VideoSection /> */}
         <ListSection />
@@ -23,6 +26,7 @@ export default function Home() {
         {/* <SocialProof /> */}
         {/* <PricingTable /> */}
       </main>
+      <Footer />
     </Page>
   );
 }

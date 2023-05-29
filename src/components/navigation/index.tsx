@@ -36,10 +36,6 @@ const secondaryLinks = [
     label: `Home`,
     href: `/`,
   },
-  {
-    label: `About`,
-    href: `/about`,
-  },
   // {
   //   label: `Get Started`,
   //   href: `/`,
@@ -121,7 +117,13 @@ const Navigation = () => {
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
               <a href="/">
-                <img className={tw(`h-12 w-12`)} src="images/coding.png" alt="logo" width={48} height={48} />
+                <img
+                  className={tw(`h-12 w-12 rounded-full`)}
+                  src="https://pbs.twimg.com/profile_images/1646290921103962113/pCinLyv5_400x400.jpg"
+                  alt="logo"
+                  width={48}
+                  height={48}
+                />
               </a>
             </div>
             <div className={tw(`hidden md:block`)}>
@@ -142,9 +144,6 @@ const Navigation = () => {
             <div className={tw(`ml-4 flex items-center md:ml-6`)}>
               <Button modifier="border-0 mr-2" link="/">
                 Home
-              </Button>
-              <Button modifier="border-0 mr-2" link="about">
-                About
               </Button>
               {/* <Button primary>Get started</Button> */}
             </div>
