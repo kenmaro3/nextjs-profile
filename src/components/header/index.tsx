@@ -7,7 +7,6 @@ import Button from '@/components/button';
 
 const headerStyle = css`
   background-color: #ffffff;
-  min-height: calc(80vh - 6rem);
 `;
 
 const Header = () => (
@@ -16,12 +15,12 @@ const Header = () => (
       <p className={tw(`mt-10 text-gray-500 text-center text-xl lg:text-xl`)}>kenmaro.about.me</p>
     </div>
     <div className={tw(`max-w-4xl mx-auto py-16 px-14 sm:px-6 lg:px-8`)}>
-      <h2 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800`)}>
+      <h2 className={tw(`font-sans font-bold text-3xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800`)}>
         ねだるな、勝ち取れ
       </h2>
       <h2
         className={tw(
-          `font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800 mt-10`,
+          `font-sans font-bold text-3xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800 mt-10`,
         )}
       >
         さすれば与えられん
@@ -32,14 +31,10 @@ const Header = () => (
         <Button>Contact us</Button>
       </div> */}
     </div>
-    <div className={tw(`h-auto flex justify-center w-full`)}>
+    {/* <div className={tw(`h-auto flex justify-center w-full`)}>
       <div className={tw(`mt-4 w-full`)}>
         <p className={tw(`font-mono uppercase text-center font-medium text-sm text-gray-600`)}>Lead Developer of ...</p>
         <div className={tw(`flex items-center justify-center mx-auto flex-wrap`)}>
-          {/* <Aws className={tw(`m-12 mb-8`)} width={120} />
-          <Netlify className={tw(`m-12`)} width={140} />
-          <Nike className={tw(`m-12`)} width={140} />
-          <Figma className={tw(`m-12`)} width={140} /> */}
           <div className={tw(`flex items-center justify-center max-w-xl mx-auto`)}>
             <p
               className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
@@ -68,10 +63,6 @@ const Header = () => (
         <div className={tw(`mt-20 w-full`)}>
           <p className={tw(`font-mono uppercase text-center font-medium text-sm text-gray-600`)}>Interested in ...</p>
           <div className={tw(`flex items-center justify-center mx-auto flex-wrap`)}>
-            {/* <Aws className={tw(`m-12 mb-8`)} width={120} />
-            <Netlify className={tw(`m-12`)} width={140} />
-            <Nike className={tw(`m-12`)} width={140} />
-            <Figma className={tw(`m-12`)} width={140} /> */}
             <p
               className={tw(`p-10 mt-10 text-gray-500 text-center text-xl lg:text-2xl cursor-pointer hover:scale-105`)}
             >
@@ -90,7 +81,7 @@ const Header = () => (
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </header>
 );
 
