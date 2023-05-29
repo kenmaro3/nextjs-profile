@@ -25,7 +25,7 @@ const listItems = [
 ];
 
 const ListSection = () => (
-  <section className={tw(`lg:py-14 pt-20 overflow-hidden`)}>
+  <section className={tw(`lg:py-4 overflow-hidden`)}>
     <div className={tw(`max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 bg-white`)}>
       <div className={tw(`mb-16 text-center`)}>
         <h2 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>
@@ -35,7 +35,7 @@ const ListSection = () => (
           Transform your business
         </p> */}
       </div>
-      <div className={tw(`flex flex-wrap -mx-8 items-center`)}>
+      <div className={tw(`flex flex-wrap -mx-8 items-center mb-20`)}>
         <div className={tw(`w-full lg:w-1/2 px-8`)}>
           <ul className={tw(`space-y-12`)}>
             {listItems.map((item, index) => (

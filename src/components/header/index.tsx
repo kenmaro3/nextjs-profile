@@ -13,7 +13,7 @@ const headerStyle = css`
 const Header = () => (
   <header className={tw(headerStyle)}>
     <div className={tw(`max-w-xl mx-auto`)}>
-      <p className={tw(`mt-10 text-gray-500 text-center text-xl lg:text-3xl`)}>kenmaro.about.me</p>
+      <p className={tw(`mt-10 text-gray-500 text-center text-xl lg:text-xl`)}>kenmaro.about.me</p>
     </div>
     <div className={tw(`max-w-4xl mx-auto py-16 px-14 sm:px-6 lg:px-8`)}>
       <h2 className={tw(`font-sans font-bold text-4xl md:text-5xl lg:text-5xl text-center leading-snug text-gray-800`)}>

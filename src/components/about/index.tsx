@@ -33,7 +33,7 @@ const About = () => (
     <div className={tw(`w-full relative`)}>
       <div className={tw(`absolute left-0 top-0 h-screen w-full overflow-hidden`)} />
       <div className={tw(`max-w-7xl mx-4 lg:mx-auto lg:pt-8`)}>
-        <p className={tw(`lg:text-4xl text-white text-gray-800 text-xl mt-8 font-bold`)}>About</p>
+        <p className={tw(`lg:text-4xl text-gray-600 text-xl mt-8 font-bold`)}>About</p>
         <div className={tw(`mx-auto pt-20`)}>
           <div className={tw(`w-full flex flex-wrap justify-around`)}>
             <div
@@ -120,7 +120,7 @@ const About = () => (
               <div className={tw(`shadow	 p-8 w-full mx-auto -mt-8 bg-white rounded-b z-30 relative rounded-lg`)}>
                 <div className={tw(`flex flex-col justify-center px-4 py-1 pb-4`)}>
                   <div className={tw(`flex flex-col`)}>
-                    <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Hackathon</div>
+                    <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://hackday.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">
                         <div className={tw(`text-lg`)}>Yahoo! JAPAN Digital Hack Day 2022</div>
@@ -188,7 +188,7 @@ const About = () => (
               <div className={tw(`shadow	 p-8 w-full mx-auto -mt-8 bg-white rounded-b z-30 relative rounded-lg`)}>
                 <div className={tw(`flex flex-col justify-center px-4 py-1 pb-4`)}>
                   <div className={tw(`flex flex-col`)}>
-                    <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Language</div>
+                    <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Language</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <div className={tw(`text-lg`)}>中国語(HSK4級)</div>
                       <div className={tw(`text-sm`)}>2023-03</div>
