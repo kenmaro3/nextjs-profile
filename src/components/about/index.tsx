@@ -51,9 +51,8 @@ const About = () => (
                     width={60}
                     height={60}
                   />
-                  <div className={tw(`text-3xl text-gray-800 font-medium pt-4`)}>kenmaro</div>
-                  <div className={tw(`text-base pt-4 text-gray-500`)}>Software Engineer</div>
-                  <div className={tw(`text-base pt-4 text-gray-500`)}>AI Engineer</div>
+                  <div className={tw(`text-2xl text-gray-800 font-medium pt-4`)}>kenmaro</div>
+                  <div className={tw(`text-base pt-4 text-gray-500`)}>Software Developer</div>
                 </div>
               </div>
             </div>
@@ -70,7 +69,7 @@ const About = () => (
                     <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Work</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://www.eaglys.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>EAGLYS Inc</div>
+                        <div className={tw(`text-md`)}>EAGLYS Inc</div>
                         <div className={tw(`text-sm`)}>Research Engineer (R&D Manager)</div>
                       </a>
                     </div>
@@ -80,7 +79,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-lg`)}>Waseda University</div>
+                        <div className={tw(`text-md`)}>Waseda University</div>
                         <div className={tw(`text-sm`)}>
                           Researcher @Global Consolidated Research <br />
                           Institute for Science Wisdom
@@ -96,13 +95,13 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-lg`)}>Stony Brook University</div>
+                        <div className={tw(`text-md`)}>Stony Brook University</div>
                         <div className={tw(`text-sm`)}>Master of Arts (Physics & Astronomy)</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="http://www.sci.kumamoto-u.ac.jp/index-j.html" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>熊本大学</div>
+                        <div className={tw(`text-md`)}>熊本大学</div>
                         <div className={tw(`text-sm`)}>理学部理学科 (2015)</div>
                       </a>
                     </div>
@@ -123,19 +122,19 @@ const About = () => (
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://hackday.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>Yahoo! JAPAN Digital Hack Day 2022</div>
+                        <div className={tw(`text-md`)}>Yahoo! JAPAN Digital Hack Day 2022</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://tokyo.akindo.io/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>東京ウェブ３ハッカソン</div>
+                        <div className={tw(`text-md`)}>東京ウェブ３ハッカソン(2022)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://hackday.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>Yahoo! JAPAN Digital Hack Day 2021</div>
+                        <div className={tw(`text-md`)}>YJ Digital Hack Day(2021)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
@@ -145,7 +144,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-lg`)}>Yahoo! JAPAN Hack Day 2021</div>
+                        <div className={tw(`text-md`)}>Yahoo! JAPAN Hack Day 2021</div>
                         <div className={tw(`text-sm`)}>Judge</div>
                       </a>
                     </div>
@@ -155,13 +154,13 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-lg`)}>IDASH (秘密計算国際コンペティション) (2021)</div>
+                        <div className={tw(`text-md`)}>IDASH (秘密計算国際コンペティション) (2021)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://www.businessinsider.jp/post-202846" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-lg`)}>秘密計算ハッカソン (2019)</div>
+                        <div className={tw(`text-md`)}>秘密計算ハッカソン (2019)</div>
                         <div className={tw(`text-sm`)}>Organizer</div>
                       </a>
                     </div>
@@ -171,7 +170,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-lg`)}>Epson Hack Trek (2019)</div>
+                        <div className={tw(`text-md`)}>Epson Hack Trek (2019)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
@@ -190,15 +189,15 @@ const About = () => (
                   <div className={tw(`flex flex-col`)}>
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Language</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-lg`)}>中国語(HSK4級)</div>
+                      <div className={tw(`text-md`)}>中国語(HSK4級)</div>
                       <div className={tw(`text-sm`)}>2023-03</div>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-lg`)}>英語(TOEFL iBT 94)</div>
+                      <div className={tw(`text-md`)}>英語(TOEFL iBT 94)</div>
                       <div className={tw(`text-sm`)}>2014</div>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-lg`)}>日本語(母国語)</div>
+                      <div className={tw(`text-md`)}>日本語(母国語)</div>
                     </div>
                   </div>
                 </div>
