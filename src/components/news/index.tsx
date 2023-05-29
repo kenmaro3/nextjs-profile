@@ -28,7 +28,7 @@ const News = () => (
           <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 p-8 hover:scale-105`)}>
             <div className={tw(`flex items-center mb-6`)}>
               <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
-              <div className={tw(`ml-4 text-xl`)}>Interview</div>
+              <div className={tw(`ml-4 text-xl`)}>Publish</div>
             </div>
             <p className={tw(`leading-loose text-gray-500`)}>
               <a href="https://arxiv.org/abs/2012.13552" target="_blank" rel="noopener noreferrer">
