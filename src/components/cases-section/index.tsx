@@ -45,7 +45,7 @@ const ParticleBg = () => (
 
 const articles = [
   {
-    title: `ノミカイカンジ`,
+    title: `ノミカイカンジ(Liff App)`,
     image: `https://image.brush-stock.com/img/vewoev000026.jpg`,
     alt: `nomikai_kanji_logo`,
     desc1: `ラインでの飲み会開催を主催する`,
@@ -63,7 +63,7 @@ const articles = [
     link: `https://apps.apple.com/jp/app/yorimichiapp/id1596625712`,
   },
   {
-    title: `Protohub`,
+    title: `Protohub(Web)`,
     image: `https://protohub.tech/static/media/nav_logo.13d82e2580a891aad301.png`,
     alt: `protohub_logo`,
     desc1: `プロトタイプ作りを行う`,
@@ -72,7 +72,7 @@ const articles = [
     link: `https://protohub.tech`,
   },
   {
-    title: `ダイビングイクンゴ`,
+    title: `ダイビングイクンゴ(Web)`,
     image: `https://www.owd.jp/wp-content/uploads/2018/04/DSC7678.jpg`,
     alt: `diving_logo`,
     desc1: `ダイビングが好きな`,

@@ -69,7 +69,7 @@ const About = () => (
                     <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Work</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://www.eaglys.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>EAGLYS Inc</div>
+                        <div className={tw(`text-md`)}>EAGLYS Inc(2018-current)</div>
                         <div className={tw(`text-sm`)}>Research Engineer (R&D Manager)</div>
                       </a>
                     </div>
@@ -79,7 +79,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-md`)}>Waseda University</div>
+                        <div className={tw(`text-md`)}>Waseda University(2019-current)</div>
                         <div className={tw(`text-sm`)}>
                           Researcher @Global Consolidated Research <br />
                           Institute for Science Wisdom
@@ -95,14 +95,14 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-md`)}>Stony Brook University</div>
+                        <div className={tw(`text-md`)}>Stony Brook University(2015-2018)</div>
                         <div className={tw(`text-sm`)}>Master of Arts (Physics & Astronomy)</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="http://www.sci.kumamoto-u.ac.jp/index-j.html" target="_blank" rel="noopener noreferrer">
                         <div className={tw(`text-md`)}>熊本大学</div>
-                        <div className={tw(`text-sm`)}>理学部理学科 (2015)</div>
+                        <div className={tw(`text-sm`)}>理学部理学科 (2011-2015)</div>
                       </a>
                     </div>
                   </div>
@@ -122,7 +122,7 @@ const About = () => (
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://hackday.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>Yahoo! JAPAN Digital Hack Day 2022</div>
+                        <div className={tw(`text-md`)}>Yahoo! JAPAN Digital Hack Day(2022)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
