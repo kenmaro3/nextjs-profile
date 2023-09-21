@@ -8,10 +8,10 @@ const FeatureSection = () => (
         <div className={tw(`mb-16 text-center`)}>
           <h4 className={tw(`lg:text-2xl text-base text-indigo-600 font-semibold tracking-wide uppercase`)}>Blogs</h4>
           <p className={tw(`font-mono text-center font-medium text-sm text-gray-600 pt-6`)}>
-            <p className={tw(`font-bold`)}>254</p> articles on Qiita
+            <p className={tw(`font-bold`)}>277</p> articles on Qiita
           </p>
           <p className={tw(`font-mono text-center font-medium text-sm text-gray-600 pt-6`)}>
-            <p className={tw(`font-bold`)}>19</p> articles on note
+            <p className={tw(`font-bold`)}>33</p> articles on note
           </p>
           {/* <p className={tw(`mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`)}>
             How we change the game

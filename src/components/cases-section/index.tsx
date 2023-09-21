@@ -45,6 +45,15 @@ const ParticleBg = () => (
 
 const articles = [
   {
+    title: `AUTHBLUE`,
+    image: `https://www.authblue.co.jp/_next/static/images/only_color_finger-c72ed1cca02e9c54e0f6936a8a37885b.png`,
+    alt: `authblue_logo`,
+    desc1: `同意を取るならAUTHBLUE。`,
+    desc2: `同意をもっとスマートに`,
+    desc3: `そして安全に。`,
+    link: `https://authblue.co.jp`,
+  },
+  {
     title: `ノミカイカンジ(Liff App)`,
     image: `https://image.brush-stock.com/img/vewoev000026.jpg`,
     alt: `nomikai_kanji_logo`,
@@ -78,7 +87,7 @@ const articles = [
     desc1: `ダイビングが好きな`,
     desc2: `人たちを対象とした`,
     desc3: `ダイビングスポットの口コミサイト`,
-    link: `https://diving-ikungo.com`,
+    link: `https://diving-front-g13kqmlq7-kenmaro3.vercel.app/`,
   },
   // {
   //   title: `Velit reprehenderit culpa Lorem reprehenderit ipsum esse.`,
