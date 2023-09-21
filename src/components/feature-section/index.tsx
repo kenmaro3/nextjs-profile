@@ -42,7 +42,7 @@ const FeatureSection = () => (
               <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
               <div className={tw(`ml-4 text-xl`)}>Secure Computing</div>
             </div>
-            <di className={tw(`leading-loose text-gray-500`)}>
+            <div className={tw(`leading-loose text-gray-500`)}>
               <a href="https://qiita.com/kenmaro/items/f2d4fb84833c308a4d29" target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://uploads-ssl.webflow.com/61cea7888ae76f0a1433f687/61ceac634d566db764ebcd5e_qiiiiita.png"
@@ -54,7 +54,7 @@ const FeatureSection = () => (
                 <h4>最先端の秘密計算技術、格子暗号スタディロードマップを公開！！</h4>
                 <div>Qiita＠ kenmaro</div>
               </a>
-            </di>
+            </div>
           </div>
           <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 p-8 hover:scale-105`)}>
             <div className={tw(`flex items-center mb-6`)}>
