@@ -1,5 +1,5 @@
 import { tw } from 'twind';
-import Particles from 'react-particles-js';
+import Particles from 'react-particles';
 import Arrow from '@/constants/svg/arrow.svg';
 
 const ParticleBg = () => (
@@ -46,7 +46,7 @@ const ParticleBg = () => (
 const articles = [
   {
     title: `AUTHBLUE`,
-    image: `https://www.authblue.co.jp/_next/static/images/only_color_finger-c72ed1cca02e9c54e0f6936a8a37885b.png`,
+    image: `/images/authblue-logo.png`,
     alt: `authblue_logo`,
     desc1: `同意を取るならAUTHBLUE。`,
     desc2: `同意をもっとスマートに`,
