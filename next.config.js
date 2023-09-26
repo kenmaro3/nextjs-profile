@@ -7,9 +7,5 @@ module.exports = {
 
     return config;
   },
-  images: {
-    loader: 'akamai',
-    path: '',
-  },
   experimental: { esmExternals: true }
 };
