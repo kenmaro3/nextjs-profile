@@ -51,7 +51,7 @@ const articles = [
     desc1: `同意を取るならAUTHBLUE。`,
     desc2: `同意をもっとスマートに`,
     desc3: `そして安全に。`,
-    link: `https://authblue.co.jp`,
+    link: `https://authblue.jp`,
   },
   {
     title: `ノミカイカンジ(Liff App)`,
