@@ -121,7 +121,7 @@ const About = () => (
                   <div className={tw(`flex flex-col`)}>
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <a href="https://hackday.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.digital.go.jp/policies/legal-practice/hackathon" target="_blank" rel="noopener noreferrer">
                         <div className={tw(`text-md`)}>Law API Hackathon by Digital Ministry of Japan(2023)</div>
                         <div className={tw(`text-sm`)}>Developer (Won Prize)</div>
                       </a>
