@@ -12,6 +12,25 @@ const News = () => (
               <div className={tw(`ml-4 text-xl`)}>Press Release</div>
             </div>
             <div className={tw(`leading-loose text-gray-500`)}>
+              <a href="https://pr-free.jp/2023/86589/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/images/authblue_press_head.png"
+                  loading="lazy"
+                  width="505"
+                  alt="Qiita＠ Kenmaro"
+                />
+                <div>2023-10-21</div>
+                <h4>AUTHBLUE／【プラットフォーム＆モバイルApp】同意や情報の取得を管理する「AUTHBLUE」を公開開始</h4>
+                <div>Press Release</div>
+              </a>
+            </div>
+          </div>
+          <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 p-8 hover:scale-105`)}>
+            <div className={tw(`flex items-center mb-6`)}>
+              <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
+              <div className={tw(`ml-4 text-xl`)}>Press Release</div>
+            </div>
+            <div className={tw(`leading-loose text-gray-500`)}>
               <a href="https://pr-free.jp/2021/45712/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://pr-free.jp/wp-content/uploads/2021/11/20211124_1417top1.png"

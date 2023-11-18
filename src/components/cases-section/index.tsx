@@ -54,6 +54,15 @@ const articles = [
     link: `https://authblue.jp`,
   },
   {
+    title: `Themis`,
+    image: `/images/themis.png`,
+    alt: `themis`,
+    desc1: `法律AIアシスタント`,
+    desc2: `法律のお悩み事をもっと気軽に`,
+    desc3: `相談しよう。`,
+    link: `https://building-a-chatbot-ui-with-langchain-and-upstrash-fna5wpfh5.vercel.app/`,
+  },
+  {
     title: `ノミカイカンジ(Liff App)`,
     image: `https://image.brush-stock.com/img/vewoev000026.jpg`,
     alt: `nomikai_kanji_logo`,
