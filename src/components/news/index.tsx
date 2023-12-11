@@ -12,6 +12,25 @@ const News = () => (
               <div className={tw(`ml-4 text-xl`)}>Press Release</div>
             </div>
             <div className={tw(`leading-loose text-gray-500`)}>
+              <a href="https://pr-free.jp/2023/88479/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="/images/themis_press_head.png"
+                  loading="lazy"
+                  width="505"
+                  alt="press_themis_release"
+                />
+                <div>2023-11-29</div>
+                <h4>ThemisJP／ThemisJP／LLMを用いた法律AIアシスタントを正式リリース</h4>
+                <div>Press Release</div>
+              </a>
+            </div>
+          </div>
+          <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 p-8 hover:scale-105`)}>
+            <div className={tw(`flex items-center mb-6`)}>
+              <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
+              <div className={tw(`ml-4 text-xl`)}>Press Release</div>
+            </div>
+            <div className={tw(`leading-loose text-gray-500`)}>
               <a href="https://pr-free.jp/2023/86589/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="/images/authblue_press_head.png"

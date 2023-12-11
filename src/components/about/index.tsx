@@ -121,6 +121,18 @@ const About = () => (
                   <div className={tw(`flex flex-col`)}>
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a href="https://lu.ma/difun.hackathon" target="_blank" rel="noopener noreferrer">
+                        <div className={tw(`text-md`)}>Virtual Influener Hackathon (2023)</div>
+                        <div className={tw(`text-sm`)}>Developer</div>
+                      </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a href="https://powerplatformconf.connpass.com/event/300462/" target="_blank" rel="noopener noreferrer">
+                        <div className={tw(`text-md`)}>Power Platform Hackathon (2023)</div>
+                        <div className={tw(`text-sm`)}>Developer</div>
+                      </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://kuso-app.connpass.com/event/301167/" target="_blank" rel="noopener noreferrer">
                         <div className={tw(`text-md`)}>Kuso App Hackathon 2023</div>
                         <div className={tw(`text-sm`)}>Developer</div>

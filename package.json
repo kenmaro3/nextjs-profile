@@ -16,8 +16,7 @@
     "dev": "next",
     "build": "NODE_OPTIONS='--openssl-legacy-provider' next build",
     "start": "next start",
-    "type-check": "tsc",
-    "postinstall": "husky install"
+    "type-check": "tsc"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
