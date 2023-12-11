@@ -17,7 +17,6 @@ export default function Home() {
       <NextSeo title="kenmaro" description="kenmaro's engineer portfolio" />
       <Header />
       <About />
-      <News />
       <main>
         {/* <VideoSection /> */}
         <ListSection />
@@ -26,6 +25,7 @@ export default function Home() {
         {/* <SocialProof /> */}
         {/* <PricingTable /> */}
       </main>
+      <News />
       <Footer />
     </Page>
   );
