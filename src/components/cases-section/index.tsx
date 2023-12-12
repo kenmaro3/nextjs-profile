@@ -60,7 +60,7 @@ const articles = [
     desc1: `法律AIアシスタント`,
     desc2: `法律のお悩み事をもっと気軽に`,
     desc3: `相談しよう。`,
-    link: `https://building-a-chatbot-ui-with-langchain-and-upstrash-fna5wpfh5.vercel.app/`,
+    link: `https://themisjp.com`,
   },
   {
     title: `ノミカイカンジ(Liff App)`,
