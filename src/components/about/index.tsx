@@ -293,7 +293,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-md`)}>Emittance Measurements from SRF Gun in CeC Accelerator (2018)</div>
+                        <div className={tw(`text-md`)}>CeC Accelerator (2018)</div>
                       </a>
                     </div>
                   </div>
