@@ -247,7 +247,7 @@ const About = () => (
               <div className={tw(`shadow	 p-8 w-full mx-auto -mt-8 bg-white rounded-b z-30 relative rounded-lg`)}>
                 <div className={tw(`flex flex-col justify-center px-4 py-1 pb-4`)}>
                   <div className={tw(`flex flex-col`)}>
-                    <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Talk</div>
+                    <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Talk</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a
                         href="https://www.youtube.com/live/NFdHFmavrVk?si=u8Ef5taXDydIwPvD&t=5070"
@@ -264,6 +264,36 @@ const About = () => (
                         rel="noopener noreferrer"
                       >
                         <div className={tw(`text-md`)}>Line Developer Community (2023)</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className={tw(`flex flex-col`)}>
+                    <div className={tw(`text-2xl mt-10 text-gray-800 font-semibold`)}>Publication</div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a
+                        href="https://arxiv.org/abs/2012.13552"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>Neural Network Training With Homomorphic Encryption (2020)</div>
+                      </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a
+                        href="https://eprint.iacr.org/2024/744"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>An NVMe-based Secure Computing Platform with FPGA-based TFHE Accelerator (2024)</div>
+                      </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a
+                        href="https://accelconf.web.cern.ch/fel2017/doi/JACoW-FEL2017-WEP025.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>Emittance Measurements from SRF Gun in CeC Accelerator (2018)</div>
                       </a>
                     </div>
                   </div>
