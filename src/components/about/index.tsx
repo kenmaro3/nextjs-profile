@@ -68,8 +68,14 @@ const About = () => (
                   <div className={tw(`flex flex-col`)}>
                     <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Work</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a href="https://cellid.com/" target="_blank" rel="noopener noreferrer">
+                        <div className={tw(`text-md`)}>Cellid Inc(2024-current)</div>
+                        <div className={tw(`text-sm`)}>Software Department Manager</div>
+                      </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://www.eaglys.co.jp/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>EAGLYS Inc(2018-current)</div>
+                        <div className={tw(`text-md`)}>EAGLYS Inc(2018-2024)</div>
                         <div className={tw(`text-sm`)}>Research Engineer (R&D Manager)</div>
                       </a>
                     </div>
@@ -100,10 +106,34 @@ const About = () => (
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <a href="http://www.sci.kumamoto-u.ac.jp/index-j.html" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>熊本大学</div>
-                        <div className={tw(`text-sm`)}>理学部理学科 (2011-2015)</div>
+                      <a
+                        href="https://www.leeds.ac.uk/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>University of Leeds(2012-2013)</div>
+                        <div className={tw(`text-sm`)}>Physics Exchange Student</div>
                       </a>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a href="http://www.sci.kumamoto-u.ac.jp/index-j.html" target="_blank" rel="noopener noreferrer">
+                        <div className={tw(`text-md`)}>Kumamoto University (熊本大学)</div>
+                        <div className={tw(`text-sm`)}>Science Dept (理学部理学科) (2011-2015)</div>
+                      </a>
+                    </div>
+                  </div>
+                  <div className={tw(`flex flex-col mt-10`)}>
+                    <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Language</div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <div className={tw(`text-md`)}>Chinese (HSK4級)</div>
+                      <div className={tw(`text-sm`)}>2023-03</div>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <div className={tw(`text-md`)}>English (TOEFL iBT 94)</div>
+                      <div className={tw(`text-sm`)}>2014</div>
+                    </div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <div className={tw(`text-md`)}>Japanese (Native)</div>
                     </div>
                   </div>
                 </div>
@@ -120,6 +150,12 @@ const About = () => (
                 <div className={tw(`flex flex-col justify-center px-4 py-1 pb-4`)}>
                   <div className={tw(`flex flex-col`)}>
                     <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Hackathon</div>
+                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
+                      <a href="https://asciistartup.connpass.com/event/323458/" target="_blank" rel="noopener noreferrer">
+                        <div className={tw(`text-md`)}>PLATEAU Hack Challenge 2024 in Tokyo (2024)</div>
+                        <div className={tw(`text-sm`)}>Developer</div>
+                      </a>
+                    </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://lu.ma/difun.hackathon" target="_blank" rel="noopener noreferrer">
                         <div className={tw(`text-md`)}>Virtual Influener Hackathon (2023)</div>
@@ -152,7 +188,7 @@ const About = () => (
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://tokyo.akindo.io/" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>東京ウェブ３ハッカソン(2022)</div>
+                        <div className={tw(`text-md`)}>Tokyo Web3 Hackathon (2022)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
@@ -178,13 +214,13 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-md`)}>IDASH (秘密計算国際コンペティション) (2021)</div>
+                        <div className={tw(`text-md`)}>IDASH (Secure Computing Competition) (2021)</div>
                         <div className={tw(`text-sm`)}>Developer</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
                       <a href="https://www.businessinsider.jp/post-202846" target="_blank" rel="noopener noreferrer">
-                        <div className={tw(`text-md`)}>秘密計算ハッカソン (2019)</div>
+                        <div className={tw(`text-md`)}>Secure Computing Hackathon (2019)</div>
                         <div className={tw(`text-sm`)}>Organizer</div>
                       </a>
                     </div>
@@ -211,17 +247,24 @@ const About = () => (
               <div className={tw(`shadow	 p-8 w-full mx-auto -mt-8 bg-white rounded-b z-30 relative rounded-lg`)}>
                 <div className={tw(`flex flex-col justify-center px-4 py-1 pb-4`)}>
                   <div className={tw(`flex flex-col`)}>
-                    <div className={tw(`text-2xl text-gray-800 font-semibold`)}>Language</div>
+                    <div className={tw(`text-2xl pt-4 text-gray-800 font-semibold`)}>Talk</div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-md`)}>中国語(HSK4級)</div>
-                      <div className={tw(`text-sm`)}>2023-03</div>
+                      <a
+                        href="https://www.youtube.com/live/NFdHFmavrVk?si=u8Ef5taXDydIwPvD&t=5070"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>Plateau Hack Challenge (2024)</div>
+                      </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-md`)}>英語(TOEFL iBT 94)</div>
-                      <div className={tw(`text-sm`)}>2014</div>
-                    </div>
-                    <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
-                      <div className={tw(`text-md`)}>日本語(母国語)</div>
+                      <a
+                        href="https://www.youtube.com/live/A4r0zRADrKE?si=mD8GcfNDJDdAkUDe&t=1491"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className={tw(`text-md`)}>Line Developer Community (2023)</div>
+                      </a>
                     </div>
                   </div>
                 </div>

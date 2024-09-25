@@ -3,8 +3,8 @@ import FeatureSvg from '@/constants/svg/features.svg';
 
 const listItems = [
   {
-    title: `Secure Computing Developer`,
-    description: `秘密計算技術の社会応用について取り組んでいます。
+    title: `Web / Infrastructure / AI Engineer`,
+    description: `様々なアプリケーション開発をフリーランスとして開発しています。
     `,
   },
   {
