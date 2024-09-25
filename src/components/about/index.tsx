@@ -284,7 +284,7 @@ const About = () => (
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <div className={tw(`text-md`)}>An NVMe-based Secure Computing Platform with FPGA-based TFHE Accelerator (2024)</div>
+                        <div className={tw(`text-md`)}>An NVMe-based TFHE Accelerator (2024)</div>
                       </a>
                     </div>
                     <div className={tw(`text-gray-600 pt-4 cursor-pointer hover:scale-105`)}>
