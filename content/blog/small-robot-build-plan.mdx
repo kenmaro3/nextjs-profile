@@ -1,0 +1,62 @@
+---
+title: "小型ロボット制作ログ：まずは構成を考える"
+description: "小型4輪ロボットを作り始める前に、サイズ、制御系、電源、センサーのバランスをどう考えるかを整理した最初の設計メモです。"
+slug: "small-robot-build-plan"
+publishedAt: "2026-04-29"
+updatedAt: "2026-04-29"
+category: "Robotics"
+tags: ["Robot", "Planning", "ESP32", "Build Log"]
+coverImage: "/images/blog/small-robot-build-plan.svg"
+youtubeUrl: "https://www.youtube.com/watch?v=NFdHFmavrVk"
+githubUrl: "https://github.com/kenmaro3"
+draft: true
+---
+
+## 先に決めるべき条件
+
+小型ロボットを作るとき、いきなり配線を始めるより先に、全体の制約を決めた方が進めやすいです。
+
+今回の前提は次のとおりです。
+
+- 机の上で扱えるサイズ
+- ESP32 を中心に制御する
+- 3Dプリントしやすいシャーシ構成
+- カメラや距離センサーを後から追加しやすい
+
+## 最初の構成案
+
+<PartsList
+  title="Planned core parts"
+  items={[
+    { name: 'ESP32', note: 'Main controller with wireless debugging headroom.' },
+    { name: 'Dual motor driver', note: 'Enough for the first 2WD or 4WD motion tests.' },
+    { name: 'DC geared motors', note: 'Simple baseline before jumping to more complex drive systems.' },
+    { name: 'Battery pack', note: 'Small enough to keep center of gravity low.' },
+  ]}
+/>
+
+ここでは、まず「小さく動くこと」を優先します。複雑な自律制御やセンサーフュージョンは、ベース移動体が安定してから追加する方がよいと考えています。
+
+## 迷っている点
+
+一番迷っているのは、最初から 4WD にするか、2WD + キャスターで始めるかです。
+
+4WD は見た目も安定感もありますが、部品点数と調整箇所が増えます。まずは最短で走行テストに入るため、段階的な実装にする可能性が高いです。
+
+<Callout title="Current bias" tone="warning">
+  最初から全部入りにすると止まりやすいので、まずは移動と電源系の確認を優先します。
+</Callout>
+
+## 記録したいもの
+
+このプロジェクトでは、次の情報を必ず残すようにします。
+
+- 使用部品
+- 配線メモ
+- シャーシの変更履歴
+- 失敗した構成
+- 動いた時点のコードと動画
+
+## 次にやること
+
+次は ESP32 側でモーター制御を試して、最低限の前進・後退・旋回が安定するかを確認します。

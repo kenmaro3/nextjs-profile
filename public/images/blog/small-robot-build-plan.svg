@@ -1,0 +1,11 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#F8FAFD"/>
+  <rect x="58" y="58" width="1084" height="604" rx="34" fill="#EDF3F9"/>
+  <text x="128" y="176" fill="#12324C" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">ROBOTICS</text>
+  <text x="128" y="276" fill="#12324C" font-family="Arial, sans-serif" font-size="62" font-weight="700">Small Robot Plan</text>
+  <text x="128" y="340" fill="#526477" font-family="Arial, sans-serif" font-size="30">Starting from chassis, power, motors, and constraints</text>
+  <rect x="760" y="186" width="240" height="180" rx="28" fill="#12324C"/>
+  <rect x="718" y="322" width="324" height="182" rx="28" fill="#D9E7F4"/>
+  <circle cx="810" cy="532" r="26" fill="#12324C"/>
+  <circle cx="956" cy="532" r="26" fill="#12324C"/>
+</svg>

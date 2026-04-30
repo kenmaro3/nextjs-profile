@@ -1,0 +1,51 @@
+---
+title: "ESP32カメラ実験"
+slug: "esp32-camera-experiment"
+description: "ESP32-CAM を使って、映像取得とロボット補助用途の可能性を探る実験プロジェクト。"
+status: "Planning"
+coverImage: "/images/projects/esp32-camera-experiment.svg"
+technologies: ["ESP32-CAM", "Wi-Fi", "Streaming", "Build Log"]
+parts: ["ESP32-CAM", "Battery", "Mount", "Lens"]
+youtubeUrl: ""
+githubUrl: "https://github.com/kenmaro3"
+relatedPosts: ["kenmaro-restart"]
+publishedAt: "2026-04-29"
+updatedAt: "2026-04-29"
+draft: true
+---
+
+## Project overview
+
+ESP32-CAM を使って、映像確認、遠隔観察、YouTube 制作用素材の取りやすさをまとめて試す予定です。
+
+## Purpose
+
+単に映るかどうかだけでなく、ロボットに載せたときに役に立つかを見ます。
+
+## Parts used
+
+<PartsList
+  items={[
+    { name: 'ESP32-CAM', note: 'Main camera module.' },
+    { name: 'Small battery', note: 'Keeping the setup self-contained matters for bench tests.' },
+    { name: 'Simple printed mount', note: 'Needed to evaluate angle and vibration.' },
+  ]}
+/>
+
+## Circuit / CAD / 3D print notes
+
+最初は固定用の軽いマウントから始めます。強度よりも、角度を何度も変えられることを重視します。
+
+## Build log
+
+まだ実装前ですが、まずは単体での配信安定性と発熱を確認する予定です。
+
+## Failures so far
+
+現時点ではまだ未着手ですが、サイズを小さくしすぎると放熱と配線余白が厳しくなる想定です。
+
+## Planned improvements
+
+- ストリーミング品質の検証
+- ロボット搭載時の振動対策
+- 夜間や室内照明での見え方確認

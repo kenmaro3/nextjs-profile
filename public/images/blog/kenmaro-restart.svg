@@ -1,0 +1,11 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#F7FAFD"/>
+  <rect x="56" y="56" width="1088" height="608" rx="32" fill="#0F2740"/>
+  <rect x="96" y="96" width="1008" height="528" rx="28" fill="#F7FBFF"/>
+  <text x="130" y="190" fill="#0F2740" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">BUILD LOG</text>
+  <text x="130" y="286" fill="#0F2740" font-family="Arial, sans-serif" font-size="64" font-weight="700">Kenmaro Restart</text>
+  <text x="130" y="352" fill="#4E6074" font-family="Arial, sans-serif" font-size="30">A new home for hardware DIY and learning logs</text>
+  <circle cx="920" cy="260" r="110" fill="#D8E6F3"/>
+  <rect x="820" y="416" width="210" height="120" rx="24" fill="#12324C"/>
+  <text x="856" y="490" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30">Blog</text>
+</svg>

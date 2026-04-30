@@ -1,0 +1,12 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#F7FAFD"/>
+  <rect x="58" y="58" width="1084" height="604" rx="34" fill="#EDF3F8"/>
+  <text x="122" y="174" fill="#12324C" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">BUILDING</text>
+  <text x="122" y="274" fill="#12324C" font-family="Arial, sans-serif" font-size="64" font-weight="700">Small 4WD Robot</text>
+  <text x="122" y="340" fill="#526477" font-family="Arial, sans-serif" font-size="30">ESP32, motor driver, battery, and printable chassis</text>
+  <rect x="744" y="214" width="306" height="172" rx="28" fill="#12324C"/>
+  <circle cx="804" cy="454" r="34" fill="#12324C"/>
+  <circle cx="990" cy="454" r="34" fill="#12324C"/>
+  <circle cx="804" cy="602" r="34" fill="#12324C"/>
+  <circle cx="990" cy="602" r="34" fill="#12324C"/>
+</svg>

@@ -1,6 +1,6 @@
 {
   "name": "startd-theme",
-  "description": "A TypeScript/Next.js theme that includes everything you need to build amazing landing page!",
+  "description": "Kenmaro's personal hardware prototyping brand site",
   "version": "1.0.0",
   "private": true,
   "author": "Jaakko Kytölä <kytola.jaakko@gmail.com> (jaakkokytola.com)",
@@ -13,10 +13,10 @@
     "theme"
   ],
   "scripts": {
-    "dev": "next",
-    "build": "NODE_OPTIONS='--openssl-legacy-provider' next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc --noEmit"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
@@ -25,29 +25,26 @@
     ]
   },
   "dependencies": {
-    "@fontsource/inter": "4.2.1",
     "@svgr/webpack": "8.1.0",
-    "github-markdown-css": "5.1.0",
-    "gray-matter": "4.0.3",
-    "next": "12.0.2",
-    "next-seo": "4.29.0",
-    "next-transpile-modules": "9.0.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "clsx": "^2.1.1",
+    "github-slugger": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "next": "^16.0.0",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-icons": "4.3.1",
-    "react-markdown": "8.0.1",
-    "react-tweet-embed": "2.0.0",
-    "remark": "14.0.2",
-    "remark-gfm": "3.0.1",
-    "remark-html": "15.0.1",
-    "twind": "0.15.4"
+    "reading-time": "^1.5.0",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "17.7.1",
     "@commitlint/config-conventional": "11.0.0",
-    "@types/node": "14.14.28",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.1",
+    "@types/node": "^24.9.1",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "4.15.1",
     "@typescript-eslint/parser": "4.15.1",
     "commitizen": "4.3.0",
@@ -64,7 +61,7 @@
     "husky": "5.0.9",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
-    "typescript": "4.1.5"
+    "typescript": "^5.9.3"
   },
   "config": {
     "commitizen": {
@@ -72,6 +69,6 @@
     }
   },
   "resolutions": {
-    "@types/react": "17.0.33"
+    "@types/react": "^19.2.2"
   }
 }

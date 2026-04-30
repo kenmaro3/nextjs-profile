@@ -1,0 +1,69 @@
+---
+title: "ESP32でモーター制御を試す"
+description: "ESP32を使って小型ロボットのモーター制御を試した制作ログです。"
+slug: "esp32-small-robot-control"
+publishedAt: "2026-04-29"
+updatedAt: "2026-04-29"
+category: "Arduino / ESP32"
+tags: ["ESP32", "Robot", "Arduino", "Motor Control"]
+coverImage: "/images/blog/esp32-small-robot-control.svg"
+youtubeUrl: "https://www.youtube.com/watch?v=NFdHFmavrVk"
+githubUrl: "https://github.com/kenmaro3"
+draft: true
+---
+
+## 今回やったこと
+
+小型ロボットの最初の制御テストとして、ESP32 からモータードライバ経由で DC モーターを回す構成を試しました。
+
+狙いは高度な制御ではなく、まずは次の確認です。
+
+- PWM で速度差を作れるか
+- 左右のモーターで癖が違うか
+- 配線や電源由来の不安定さが出ないか
+
+<YouTubeEmbed url="https://www.youtube.com/watch?v=NFdHFmavrVk" title="ESP32 motor control test" />
+
+## 使用部品
+
+<PartsList
+  items={[
+    { name: 'ESP32 Dev Board', note: 'Main controller for PWM output and serial logging.' },
+    { name: 'Dual Motor Driver', note: 'Used to isolate motor drive from direct GPIO load.' },
+    { name: 'DC Gear Motor', note: 'Baseline drive motor for chassis testing.' },
+    { name: 'Li-ion Battery Pack', note: 'Separate enough from USB power to see real motion behavior.' },
+  ]}
+/>
+
+## 最初に起きた問題
+
+最初の段階では、片側のモーターだけ回転開始が遅く、同じ duty 比でも左右差が大きく出ました。
+
+これはコードの問題というより、モーター個体差と電源供給の癖を無視していたのが原因に近そうです。
+
+<Callout title="What changed after testing">
+  速度制御の前に、各モーターの最小始動 duty を測っておく方が実装がきれいになります。
+</Callout>
+
+## 次に試したい改善
+
+次の段階では、以下を追加したいです。
+
+- 左右別のキャリブレーション値
+- バッテリー残量低下時の挙動確認
+- センサー追加前提の配線整理
+
+## 補足リンク
+
+<GitHubCard
+  url="https://github.com/kenmaro3"
+  title="Firmware and notes"
+  description="Repository placeholder for firmware snippets, calibration notes, and future wiring diagrams."
+/>
+
+<AffiliateCard
+  title="ESP32 Dev Board"
+  image="/images/uses/microcontroller.svg"
+  comment="A safe default board for Wi-Fi enabled robot prototypes and quick firmware iteration."
+  url="https://example.com/esp32-dev-board"
+/>

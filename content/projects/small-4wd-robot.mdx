@@ -1,0 +1,60 @@
+---
+title: "小型4輪ロボット"
+slug: "small-4wd-robot"
+description: "ESP32とモータードライバを使った小型4輪ロボットの制作ログ。"
+status: "Building"
+coverImage: "/images/projects/small-4wd-robot.svg"
+technologies: ["ESP32", "Arduino", "Motor Driver", "3D Printing"]
+parts: ["ESP32", "DC Motor", "Motor Driver", "Battery"]
+youtubeUrl: "https://www.youtube.com/watch?v=NFdHFmavrVk"
+githubUrl: "https://github.com/kenmaro3"
+relatedPosts: ["small-robot-build-plan", "esp32-small-robot-control"]
+publishedAt: "2026-04-29"
+updatedAt: "2026-04-29"
+draft: true
+---
+
+## Project overview
+
+机上で扱えるサイズ感の小型4輪ロボットを作り、移動、電源、センサー追加、シャーシ改善を段階的に試していくプロジェクトです。
+
+## Purpose
+
+目的は「最初からすべてを載せた完成機」を作ることではなく、ハードウェア試作の土台を持つことです。
+
+- モーター制御の基礎を詰める
+- ESP32 を中心とした制御構成を固める
+- 3Dプリント部品の改善サイクルを回す
+- 失敗した構成もそのまま残す
+
+## Parts used
+
+<PartsList
+  items={[
+    { name: 'ESP32', note: 'Main controller for movement tests and later telemetry.' },
+    { name: 'Motor driver', note: 'Needed to drive four motors without stressing the board directly.' },
+    { name: 'DC geared motors', note: 'Compact enough for desktop-scale builds.' },
+    { name: 'Battery pack', note: 'Still evaluating the best balance between runtime and weight.' },
+  ]}
+/>
+
+## Circuit / CAD / 3D print notes
+
+現時点では、回路は最短で走行確認できる構成に寄せています。CAD と 3Dプリントは、フレーム剛性よりも「すぐ刷り直せること」を優先しています。
+
+## Build log
+
+最初の段階では、まずシャーシ寸法とモーター固定位置を決め、ESP32 から基本的な動作確認をしています。
+
+## Failures so far
+
+<Callout title="Failure log" tone="warning">
+  最初の構成では、配線取り回しを後回しにしたせいで、電池交換とセンサー追加の余白が不足しました。
+</Callout>
+
+## Planned improvements
+
+- バッテリー配置の見直し
+- 左右モーターのキャリブレーション
+- 前面センサー追加用の固定方法検討
+- カメラ搭載の可否確認

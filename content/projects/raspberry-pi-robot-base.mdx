@@ -1,0 +1,54 @@
+---
+title: "Raspberry Pi ロボットベース"
+slug: "raspberry-pi-robot-base"
+description: "Raspberry Pi を中心に、より上位の制御やカメラ処理を試すためのロボットベース構想。"
+status: "Completed"
+coverImage: "/images/projects/raspberry-pi-robot-base.svg"
+technologies: ["Raspberry Pi", "Python", "Camera", "3D Printing"]
+parts: ["Raspberry Pi", "Camera", "Motor Driver", "Battery"]
+youtubeUrl: ""
+githubUrl: "https://github.com/kenmaro3"
+relatedPosts: ["kenmaro-restart", "small-robot-build-plan"]
+publishedAt: "2026-04-29"
+updatedAt: "2026-04-29"
+draft: true
+---
+
+## Project overview
+
+ESP32 より一段上の処理量が必要になったときのために、Raspberry Pi ベースの移動体構成をまとめたプロジェクトです。
+
+## Purpose
+
+映像処理や高レベル制御の余地を持ちながら、どこまでコンパクトにまとめられるかを確認することが狙いです。
+
+## Parts used
+
+<PartsList
+  items={[
+    { name: 'Raspberry Pi', note: 'Main compute layer for higher-level tasks.' },
+    { name: 'Camera module', note: 'Needed for vision-related experiments.' },
+    { name: 'Motor driver', note: 'Still keeping actuation separate and simple.' },
+    { name: 'Battery pack', note: 'Runtime versus weight remains the main constraint.' },
+  ]}
+/>
+
+## Circuit / CAD / 3D print notes
+
+この構成では、基板固定位置とケーブル長が熱とメンテナンス性に直結するので、ケースより先に内部レイアウトを固めました。
+
+## Build log
+
+基本的な移動体としては成立したので、今後は用途を明確にした上で派生構成へ分ける方が良さそうです。
+
+## Failures so far
+
+<Callout title="Constraint that stayed visible" tone="warning">
+  Raspberry Pi を載せると自由度は増えますが、消費電力と発熱の管理が一気に難しくなります。
+</Callout>
+
+## Planned improvements
+
+- カメラ固定部の軽量化
+- 電源の安定性確認
+- ESP32 との役割分担の整理

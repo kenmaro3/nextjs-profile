@@ -1,0 +1,10 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="40" fill="#F7FAFD"/>
+  <rect x="60" y="60" width="1080" height="600" rx="34" fill="#F3F7FB"/>
+  <text x="126" y="172" fill="#12324C" font-family="Arial, sans-serif" font-size="24" letter-spacing="2">PLANNING</text>
+  <text x="126" y="270" fill="#12324C" font-family="Arial, sans-serif" font-size="62" font-weight="700">ESP32 Camera Experiment</text>
+  <text x="126" y="336" fill="#526477" font-family="Arial, sans-serif" font-size="30">Streaming, mounting, and compact robot visibility tests</text>
+  <rect x="766" y="196" width="262" height="184" rx="28" fill="#12324C"/>
+  <circle cx="896" cy="288" r="40" fill="#D9E7F4"/>
+  <rect x="734" y="416" width="326" height="118" rx="24" fill="#DCE8F4"/>
+</svg>
