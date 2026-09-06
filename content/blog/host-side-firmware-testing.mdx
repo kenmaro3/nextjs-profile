@@ -1,0 +1,250 @@
+---
+title: "Your firmware has no tests because CMake fought you, not because you didn't want them"
+description: "The real reason firmware projects skip unit tests isn't willpower — it's a day of CMake archaeology to get a host build and a cross-compiled target build to coexist. Here is that build, the HAL boundary that makes hardware-touching code testable, and why host-runnable tests are the precondition for an AI agent doing useful work on firmware at all."
+slug: "host-side-firmware-testing"
+publishedAt: "2026-09-06"
+updatedAt: "2026-09-06"
+category: "Embedded Systems"
+tags: ["Embedded", "Firmware", "Testing", "CMake"]
+coverImage: "/images/og/kenmaro-site.svg"
+githubUrl: "https://github.com/kenmaro3/embedded-test-kit"
+draft: false
+---
+
+Ask an embedded team why they don't have unit tests and you'll get some version of "we know, we should." That answer is honest, and it's also not the reason. The reason is that getting a host build to coexist with a cross-compiled target build in the same CMake project is close to a day of work, and none of that day pays off until it's completely done. A host build that's half wired doesn't compile. There's no partial credit, no test that runs at hour four to prove you're on the right track. You either finish the CMake archaeology or you have nothing, and "nothing" is indistinguishable from where you started. Most people, reasonably, stop.
+
+That's a shame, because the part that actually needs solving — separating logic you can run on your laptop from code that only makes sense on a chip — isn't hard once it's written down. It's just tedious to arrive at by trial and error, with a linker giving you cryptic errors about duplicate symbols and undefined references the whole way.
+
+## A host build and a target build that don't fight each other
+
+The trick is one `if` statement. Tests only get built when you are not cross-compiling — because a test binary linked for an ARM target can't run on the machine that just built it.
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(embedded_test_kit C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
+
+# 警告設定は自分のターゲットにだけ適用する。
+# add_compile_options で全体に掛けると、FetchContent で取得する Unity にも
+# -Werror が及び、こちらに非のないビルド失敗を招く。
+add_library(project_warnings INTERFACE)
+target_compile_options(project_warnings INTERFACE -Wall -Wextra -Werror)
+
+add_subdirectory(src)
+
+# ホストビルドのときだけテストを構成する。
+# クロスコンパイル時はテストバイナリを実機用に作っても実行できないため。
+if(NOT CMAKE_CROSSCOMPILING)
+    enable_testing()
+    add_subdirectory(test)
+endif()
+```
+
+The comments are in Japanese because that's the repo I actually work in day to day — I've left them as-is rather than retyping a translated version for this post, and the code means exactly what it says either way. The one line worth reading twice is `-Werror` living on an `INTERFACE` library (`project_warnings`) that only your own targets link against, instead of a global `add_compile_options`. Get that backwards and the first `FetchContent`-fetched dependency that trips one of your warnings takes your whole build down with it, for a warning you didn't write and can't fix.
+
+Cross-compiling needs a toolchain file. This is the whole thing:
+
+```cmake
+# 実機向けクロスビルド用。ホストテストではこのファイルを使わない。
+#   cmake -B build-target -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm-none-eabi.cmake
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+set(CMAKE_C_COMPILER   arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+
+# 実機用ツールチェインは実行可能ファイルをリンクできないため、
+# コンパイラ検査を静的ライブラリで行う
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+```
+
+`CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY` is the line that costs people the most time. A bare-metal toolchain can't produce an executable without a linker script and a startup file it doesn't have yet, and CMake's compiler sanity check tries to link one by default. Without that line, `cmake -B build-target -DCMAKE_TOOLCHAIN_FILE=...` fails before you've written a single line of your own code, on a check that has nothing to do with your project.
+
+Wire that up with Unity pulled in through `FetchContent` — nothing to vendor, nothing to install — and `cmake -B build && cmake --build build && ctest --test-dir build` runs real unit tests on your laptop, in seconds, on every save.
+
+## That covers pure logic. Firmware doesn't stay pure logic.
+
+The build above tests a hysteresis controller: given a setpoint and a measured temperature, should the heater be on. That's a function of two integers, no side effects, and it's a fair example of what most testing content shows you, because it's the easy 20%.
+
+Real firmware reads a temperature sensor over I2C. Something in the call stack eventually calls `HAL_I2C_Mem_Read`, or your vendor SDK's equivalent, and that function does not exist on your laptop. There's no bus, no target, nothing to link against without a board plugged in. This is the point where most people conclude that firmware just can't be unit tested — and where the CMake split above stops being enough on its own, because now you need a way to run the code that calls the hardware function without the hardware being there.
+
+## The HAL boundary, and a fake instead of a mock
+
+The fix is one function-pointer-shaped boundary and a fake behind it — no code generation, no Ruby toolchain, nothing that reads a header and writes a mock for you.
+
+```c
+#ifndef HAL_I2C_H
+#define HAL_I2C_H
+
+#include <stddef.h>
+#include <stdint.h>
+
+/* 実機では各 MCU の SDK 実装をリンクし、ホストテストでは FFF の偽物をリンクする。
+ * この 1 関数が、ホストでテストできる範囲の境界そのものになる。
+ * 戻り値: 0 で成功、負値でエラー */
+int hal_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len);
+
+#endif /* HAL_I2C_H */
+```
+
+`hal_i2c_read` is declared once and never defined in the part of the project a host build touches. The real MCU SDK implements it under a target-only source directory that is only added to the build when cross-compiling. The host build links a fake instead — and because there's exactly one declaration, the sensor driver on top of it doesn't know or care which one it gets:
+
+```c
+#include "tmp_sensor.h"
+#include "hal_i2c.h"
+
+int tmp_sensor_read_c10(int16_t *out_c10)
+{
+    uint8_t buf[2] = { 0 };
+
+    int rc = hal_i2c_read(TMP_SENSOR_I2C_ADDR, TMP_SENSOR_REG_TEMP, buf, sizeof(buf));
+    if (rc < 0) {
+        return rc;
+    }
+
+    /* 1 LSB = 1/256 degC の符号付き 16 bit。0.1 degC 単位へ変換する。
+     * raw * 10 / 256 を整数のまま計算するため、先に 32 bit へ広げる。 */
+    int16_t raw = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);
+    *out_c10 = (int16_t)(((int32_t)raw * 10) / 256);
+
+    return 0;
+}
+```
+
+On the host side, [FFF](https://github.com/meekrosoft/fff) — a single header, no build step of its own — generates the fake for `hal_i2c_read` and gives you a `custom_fake` slot to point at whatever byte sequence you want the "sensor" to have returned:
+
+```c
+#include "unity.h"
+#include "fff.h"
+#include "tmp_sensor.h"
+#include "hal_i2c.h"
+
+DEFINE_FFF_GLOBALS;
+
+FAKE_VALUE_FUNC(int, hal_i2c_read, uint8_t, uint8_t, uint8_t *, size_t);
+
+void setUp(void)
+{
+    RESET_FAKE(hal_i2c_read);
+    FFF_RESET_HISTORY();
+}
+
+void tearDown(void) {}
+
+/* 生値 0x0C80 は 12.5 degC を表す（1 LSB = 1/256 degC）*/
+static int fake_read_ok(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len)
+{
+    (void)addr; (void)reg;
+    if (len >= 2) {
+        buf[0] = 0x0C;
+        buf[1] = 0x80;
+    }
+    return 0;
+}
+
+static int fake_read_fail(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len)
+{
+    (void)addr; (void)reg; (void)buf; (void)len;
+    return -1;
+}
+
+static void test_reads_and_converts_temperature(void)
+{
+    int16_t c10 = 0;
+    hal_i2c_read_fake.custom_fake = fake_read_ok;
+
+    TEST_ASSERT_EQUAL_INT(0, tmp_sensor_read_c10(&c10));
+    TEST_ASSERT_EQUAL_INT16(125, c10);
+}
+
+static void test_uses_the_documented_address_and_register(void)
+{
+    int16_t c10 = 0;
+    hal_i2c_read_fake.custom_fake = fake_read_ok;
+
+    tmp_sensor_read_c10(&c10);
+
+    TEST_ASSERT_EQUAL_UINT(1, hal_i2c_read_fake.call_count);
+    TEST_ASSERT_EQUAL_UINT8(0x48, hal_i2c_read_fake.arg0_val);
+    TEST_ASSERT_EQUAL_UINT8(0x00, hal_i2c_read_fake.arg1_val);
+    TEST_ASSERT_EQUAL_UINT(2, (unsigned)hal_i2c_read_fake.arg3_val);
+}
+
+static void test_propagates_bus_error(void)
+{
+    int16_t c10 = 999;
+    hal_i2c_read_fake.custom_fake = fake_read_fail;
+
+    TEST_ASSERT_LESS_THAN_INT(0, tmp_sensor_read_c10(&c10));
+    TEST_ASSERT_EQUAL_INT16(999, c10); /* 失敗時に出力を書き換えない */
+}
+
+static int fake_read_negative(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len)
+{
+    (void)addr; (void)reg;
+    if (len >= 2) {
+        buf[0] = 0xFF; /* 0xFF00 = -256 raw = -1.0 degC */
+        buf[1] = 0x00;
+    }
+    return 0;
+}
+
+static void test_handles_negative_temperature(void)
+{
+    int16_t c10 = 0;
+    hal_i2c_read_fake.custom_fake = fake_read_negative;
+
+    TEST_ASSERT_EQUAL_INT(0, tmp_sensor_read_c10(&c10));
+    TEST_ASSERT_EQUAL_INT16(-10, c10);
+}
+
+int main(void)
+{
+    UNITY_BEGIN();
+    RUN_TEST(test_reads_and_converts_temperature);
+    RUN_TEST(test_uses_the_documented_address_and_register);
+    RUN_TEST(test_propagates_bus_error);
+    RUN_TEST(test_handles_negative_temperature);
+    return UNITY_END();
+}
+```
+
+Nothing here is generated. `FAKE_VALUE_FUNC` is a macro that expands to a real function definition, a matching struct to inspect calls against (`hal_i2c_read_fake.call_count`, `.arg0_val`, `.custom_fake`), and that's the entire mechanism. No Ruby runtime, no header parser, no build step that has to run before the build. You can read every line of what it expands to, because it's a header, not a code generator.
+
+The negative-temperature test is the one worth noticing: it exists because someone (me) originally forgot that the sensor's raw output is signed, shipped a driver that reported -1.0°C as roughly 65,000°C, and only caught it because a fake byte pattern for a negative reading was cheap enough to add that there was no reason not to. That's what this buys you — not "coverage" as a number, but a place to put the byte pattern that broke you last time, so it can't break you the same way twice.
+
+## The part that makes this timely: an agent can only work on code it can verify
+
+Here's the argument for doing all of the above in 2026 specifically, on top of the argument that's always been true.
+
+An AI coding agent's entire way of working is: change something, run something, read the result, decide what to do next. Take away the "run something" step and the loop doesn't stop — it just stops being connected to anything real. Point an agent at a firmware repo with no host-runnable tests and it will still produce plausible-looking C. Correct-looking register writes, correct-looking timing constants, code that compiles. It has no way to tell the difference between code that works and code that merely resembles code that worked somewhere in its training data, because for most firmware repos, nothing on the laptop it's running on can actually execute the logic it just wrote.
+
+Give it a build that separates hardware access behind a boundary like `hal_i2c.h`, and a script that configures, builds, and runs every host test with a meaningful exit code, and the loop closes:
+
+```bash
+#!/usr/bin/env bash
+# ビルドとテストを 1 コマンドで。CI と AI エージェントの両方がこれを叩く。
+set -euo pipefail
+
+BUILD_DIR="${BUILD_DIR:-build}"
+
+cmake -B "$BUILD_DIR" -DCMAKE_BUILD_TYPE=Debug "$@"
+cmake --build "$BUILD_DIR"
+ctest --test-dir "$BUILD_DIR" --output-on-failure
+```
+
+Non-zero on a bad configure, non-zero on a compiler error, non-zero on a failing assertion, zero only when all of it went cleanly. That's not a big ask, and it's not agent-specific tooling — it's the same thing a CI pipeline wants. But it's the difference between an agent that can say "I changed the driver, the tests still pass" and one that can only say "this looks right to me," which is a sentence with no information in it. `./scripts/test.sh` — or whatever the equivalent is in your project — is the one thing an agent can actually hold onto. Everything past the HAL boundary, an ISR, DMA setup, anything that only breaks under real timing, is still something a human has to check on a board. But the logic side doesn't have to be a guess anymore, for the agent or for you.
+
+## Where the code lives
+
+The host/target CMake split and the toolchain file above are real, complete, and free: **[github.com/kenmaro3/embedded-test-kit](https://github.com/kenmaro3/embedded-test-kit)** (MIT — use it in a commercial product, just keep the license notice). Clone it, run `cmake -B build && cmake --build build && ctest --test-dir build`, and watch the thermostat tests pass before you copy a single line into your own project.
+
+If you want the HAL boundary already wired for more than one MCU, the FFF fakes already written, and the CI and agent configuration that makes a script like `./scripts/test.sh` mean something the day you clone it, that's a paid kit built on top of the same repo: [kenmaro.gumroad.com/l/embedded-test-kit](https://kenmaro.gumroad.com/l/embedded-test-kit).
