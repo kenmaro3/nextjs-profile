@@ -6,7 +6,7 @@ type PartsListProps = {
   items: PartEntry[];
 };
 
-export function PartsList({ title = 'Parts list', items }: PartsListProps) {
+export function PartsList({ title = 'Parts list', items = [] }: PartsListProps) {
   return (
     <section className="parts-card">
       <div className="parts-header">
