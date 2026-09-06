@@ -2,8 +2,21 @@
 
 import { usePathname } from 'next/navigation';
 import { SmartLink } from '@/components/site/smart-link';
-import { getCopy } from '@/lib/copy';
+import { getCopy, navCopy } from '@/lib/copy';
 import { getLocaleFromPathname, withLocale } from '@/lib/locale';
+import { primaryNav } from '@/lib/site-config';
+
+type NavCopyKey = keyof typeof navCopy.ja;
+
+// Maps a primaryNav href to the locale-aware copy key that should label it.
+// Labels must come from `copy.nav` (translated per locale), never from
+// primaryNav's own `label` field, which is English-only. An href with no
+// entry here falls back to that item's `label` instead of rendering undefined.
+const navCopyKeyByHref: Partial<Record<string, NavCopyKey>> = {
+  '/': 'home',
+  '/blog': 'blog',
+  '/projects': 'projects',
+};
 
 export function SiteNav() {
   const pathname = usePathname() ?? '/';
@@ -28,12 +41,16 @@ export function SiteNav() {
         </SmartLink>
 
         <nav className="legacy-nav-links" aria-label="Primary">
-          <SmartLink href={withLocale('/', locale)} className="legacy-nav-link">
-            {copy.nav.home}
-          </SmartLink>
-          <SmartLink href={withLocale('/blog', locale)} className="legacy-nav-link">
-            {copy.nav.blog}
-          </SmartLink>
+          {primaryNav.map((item) => {
+            const copyKey = navCopyKeyByHref[item.href];
+            const label = copyKey ? copy.nav[copyKey] : item.label;
+
+            return (
+              <SmartLink key={item.href} href={withLocale(item.href, locale)} className="legacy-nav-link">
+                {label}
+              </SmartLink>
+            );
+          })}
           <div className="language-switch">
             <SmartLink href={withLocale(pathname, 'ja')} className={`language-link ${locale === 'ja' ? 'active' : ''}`}>
               {copy.nav.languageJa}
