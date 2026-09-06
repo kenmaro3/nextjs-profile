@@ -27,28 +27,28 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-# 警告設定は自分のターゲットにだけ適用する。
-# add_compile_options で全体に掛けると、FetchContent で取得する Unity にも
-# -Werror が及び、こちらに非のないビルド失敗を招く。
+# Apply warning flags only to our own targets.
+# Using add_compile_options globally would also apply -Werror to Unity,
+# which is pulled in via FetchContent, causing build failures that aren't ours to fix.
 add_library(project_warnings INTERFACE)
 target_compile_options(project_warnings INTERFACE -Wall -Wextra -Werror)
 
 add_subdirectory(src)
 
-# ホストビルドのときだけテストを構成する。
-# クロスコンパイル時はテストバイナリを実機用に作っても実行できないため。
+# Only configure tests for the host build.
+# When cross-compiling, a test binary built for the target can't be run here anyway.
 if(NOT CMAKE_CROSSCOMPILING)
     enable_testing()
     add_subdirectory(test)
 endif()
 ```
 
-The comments are in Japanese because that's the repo I actually work in day to day — I've left them as-is rather than retyping a translated version for this post, and the code means exactly what it says either way. The one line worth reading twice is `-Werror` living on an `INTERFACE` library (`project_warnings`) that only your own targets link against, instead of a global `add_compile_options`. Get that backwards and the first `FetchContent`-fetched dependency that trips one of your warnings takes your whole build down with it, for a warning you didn't write and can't fix.
+The one line worth reading twice is `-Werror` living on an `INTERFACE` library (`project_warnings`) that only your own targets link against, instead of a global `add_compile_options`. Get that backwards and the first `FetchContent`-fetched dependency that trips one of your warnings takes your whole build down with it, for a warning you didn't write and can't fix.
 
 Cross-compiling needs a toolchain file. This is the whole thing:
 
 ```cmake
-# 実機向けクロスビルド用。ホストテストではこのファイルを使わない。
+# For cross-building to the target hardware. Host tests don't use this file.
 #   cmake -B build-target -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-arm-none-eabi.cmake
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
@@ -57,8 +57,8 @@ set(CMAKE_C_COMPILER   arm-none-eabi-gcc)
 set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
 set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
 
-# 実機用ツールチェインは実行可能ファイルをリンクできないため、
-# コンパイラ検査を静的ライブラリで行う
+# The target toolchain can't link an executable, so run the compiler
+# check by building a static library instead.
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
@@ -87,9 +87,10 @@ The fix is one function-pointer-shaped boundary and a fake behind it — no code
 #include <stddef.h>
 #include <stdint.h>
 
-/* 実機では各 MCU の SDK 実装をリンクし、ホストテストでは FFF の偽物をリンクする。
- * この 1 関数が、ホストでテストできる範囲の境界そのものになる。
- * 戻り値: 0 で成功、負値でエラー */
+/* On target hardware, this links against each MCU's SDK implementation; host
+ * tests link against FFF's fake instead. This single function is the exact
+ * boundary of what can be tested on the host.
+ * Return value: 0 on success, negative on error */
 int hal_i2c_read(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len);
 
 #endif /* HAL_I2C_H */
@@ -110,8 +111,8 @@ int tmp_sensor_read_c10(int16_t *out_c10)
         return rc;
     }
 
-    /* 1 LSB = 1/256 degC の符号付き 16 bit。0.1 degC 単位へ変換する。
-     * raw * 10 / 256 を整数のまま計算するため、先に 32 bit へ広げる。 */
+    /* Signed 16-bit value where 1 LSB = 1/256 degC. Convert to units of 0.1 degC.
+     * Widen to 32 bit first so raw * 10 / 256 can be computed entirely in integers. */
     int16_t raw = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);
     *out_c10 = (int16_t)(((int32_t)raw * 10) / 256);
 
@@ -139,7 +140,7 @@ void setUp(void)
 
 void tearDown(void) {}
 
-/* 生値 0x0C80 は 12.5 degC を表す（1 LSB = 1/256 degC）*/
+/* The raw value 0x0C80 represents 12.5 degC (1 LSB = 1/256 degC) */
 static int fake_read_ok(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len)
 {
     (void)addr; (void)reg;
@@ -184,7 +185,7 @@ static void test_propagates_bus_error(void)
     hal_i2c_read_fake.custom_fake = fake_read_fail;
 
     TEST_ASSERT_LESS_THAN_INT(0, tmp_sensor_read_c10(&c10));
-    TEST_ASSERT_EQUAL_INT16(999, c10); /* 失敗時に出力を書き換えない */
+    TEST_ASSERT_EQUAL_INT16(999, c10); /* output is not overwritten on failure */
 }
 
 static int fake_read_negative(uint8_t addr, uint8_t reg, uint8_t *buf, size_t len)
@@ -231,7 +232,7 @@ Give it a build that separates hardware access behind a boundary like `hal_i2c.h
 
 ```bash
 #!/usr/bin/env bash
-# ビルドとテストを 1 コマンドで。CI と AI エージェントの両方がこれを叩く。
+# Build and test in one command. Both CI and AI agents invoke this.
 set -euo pipefail
 
 BUILD_DIR="${BUILD_DIR:-build}"
