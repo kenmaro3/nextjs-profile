@@ -1,7 +1,7 @@
 import type { Locale } from '@/lib/locale';
 
 type Copy = Record<Locale, string>;
-export type HardwareCategory = 'sensors' | 'motion' | 'boards';
+export type HardwareCategory = 'sensors' | 'motion' | 'boards' | 'fpga';
 
 export type HardwarePart = {
   id: string;
@@ -182,6 +182,43 @@ export const hardwareParts: HardwarePart[] = [
       ja: 'ローバーv1: Mega / 後の構成: UNO / 四脚: Nano',
       en: 'Rover v1: Mega / later setup: UNO / quadruped: Nano',
     },
+  },
+  {
+    id: 'fpga-cmod',
+    model: 'Cmod A7-35T',
+    category: 'fpga',
+    kind: { ja: 'Artix-7 FPGAボード', en: 'Artix-7 FPGA board' },
+    story: {
+      ja: '自作RISC-V CPU・OSの実機検証。USB UARTによるカーネル出力の確認とシミュレータとの比較。',
+      en: 'Custom RISC-V CPU and OS validation, with kernel output over USB UART compared against the simulator.',
+    },
+    projects: ['custom-os'],
+    note: { ja: 'XC7A35T-CPG236-1', en: 'XC7A35T-CPG236-1' },
+  },
+  {
+    id: 'fpga-pynq',
+    model: 'PYNQ-Z2',
+    category: 'fpga',
+    kind: { ja: 'Zynq-7020 FPGAボード', en: 'Zynq-7020 FPGA board' },
+    story: {
+      ja: '自作CPU・OSの実機検証。PL側のUARTをILAで記録し、カーネル・MMU・Ethernet MACを確認。',
+      en: 'Custom CPU and OS validation, using ILA to capture PL-side UART for kernel, MMU, and Ethernet MAC checks.',
+    },
+    projects: ['custom-os'],
+    note: { ja: 'XC7Z020-CLG400-1', en: 'XC7Z020-CLG400-1' },
+  },
+  {
+    id: 'fpga-zed',
+    model: 'ZedBoard',
+    category: 'fpga',
+    kind: { ja: 'Zynq-7020 FPGAボード', en: 'Zynq-7020 FPGA board' },
+    story: {
+      ja: 'custom-osの開発環境に接続。FMC経由のカメラ入力と画像処理の構成を検討。',
+      en:
+        'Connected to the custom-os development setup, with FMC camera input and image-processing configurations under exploration.',
+    },
+    projects: ['custom-os'],
+    note: { ja: 'XC7Z020-CLG484-1 / カメラ入力は未検証', en: 'XC7Z020-CLG484-1 / camera input unverified' },
   },
 ];
 

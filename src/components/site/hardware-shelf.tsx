@@ -12,6 +12,7 @@ const groups = [
     parts: ['lidar-2d', 'lidar-3d', 'ultrasonic'],
   },
   { id: 'motion', ja: 'モーター・ドライバ', en: 'Motors & drivers', parts: ['gear-motor', 'motor-driver', 'servo'] },
+  { id: 'fpga', ja: 'FPGA', en: 'FPGA', parts: ['fpga-cmod', 'fpga-pynq', 'fpga-zed'] },
   { id: 'boards', ja: 'MCU・ボード', en: 'MCUs & boards', parts: ['xiao-nrf', 'xiao-esp', 'pi', 'arduino'] },
 ] as const;
 
@@ -26,8 +27,8 @@ export function HardwareShelf({ locale }: { locale: Locale }) {
         </h2>
         <p className="hardware-intro">
           {isJa
-            ? 'ロボット・ウェアラブルの個人制作で扱っているセンサーや制御用ボード。'
-            : 'Sensors and control boards for personal robotics and wearable projects.'}
+            ? 'ロボット・ウェアラブル・自作CPU／OSの個人制作で扱っているハードウェア。'
+            : 'Hardware for personal robotics, wearables, and custom CPU / OS projects.'}
         </p>
 
         <div className="hardware-categories">
