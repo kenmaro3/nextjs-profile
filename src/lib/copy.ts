@@ -214,7 +214,7 @@ export const pageCopy = {
       hardwareNoteTitle: 'And now: Hardware / Prototyping',
       hardwareNoteDescription:
         'This site is also where I will gradually publish build logs around hardware DIY, ESP32, robotics, sensors, and 3D printing.',
-      projectsHeading: 'Personal Product History',
+      projectsHeading: 'Personal Projects',
       hardwareProjectsHeading: 'Hardware Projects',
       blogsHeading: 'Blogs',
       blogsDescription: 'The older Qiita and note links stay visible here.',

@@ -4,6 +4,7 @@ import { JsonLd } from '@/components/site/json-ld';
 import { SmartLink } from '@/components/site/smart-link';
 import { SponsorCTA } from '@/components/site/sponsor-cta';
 import { HardwareShelf } from '@/components/site/hardware-shelf';
+import { personalProjects } from '@/data/personal-projects';
 import { breadcrumbJsonLd } from '@/lib/json-ld';
 import { getCopy } from '@/lib/copy';
 import type { Locale } from '@/lib/locale';
@@ -418,10 +419,22 @@ export async function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="legacy-projects">
+      <section className="legacy-projects" id="personal-projects" aria-labelledby="personal-projects-heading">
         <div className="container">
-          <p className="legacy-projects-label">{labels.projectsHeading}</p>
+          <h2 className="legacy-projects-label" id="personal-projects-heading">{labels.projectsHeading}</h2>
           <div className="legacy-project-grid">
+            {personalProjects.map((project) => (
+              <article key={project.id} id={`project-${project.id}`} className="legacy-project-card" data-static="true">
+                <div className="legacy-project-image-wrap">
+                  <Image src={project.image} alt={project.title} className="legacy-project-image" width={1200} height={630} />
+                </div>
+                <div className="legacy-project-copy">
+                  <h3>{project.title}</h3>
+                  {project.description[locale].map((line) => <span key={line}>{line}</span>)}
+                  <small>{isJa ? '開発中' : 'In development'}</small>
+                </div>
+              </article>
+            ))}
             {legacyPersonalProjects.map((project) => (
               <article key={project.title} className="legacy-project-card">
                 <SmartLink href={project.link}>
