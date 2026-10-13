@@ -574,6 +574,140 @@ main {
   gap: 20px;
 }
 
+/* Hardware follows the Profile section's neutral cards and typography. */
+.hardware-shelf {
+  padding: 18px 0 56px;
+  scroll-margin-top: 110px;
+}
+
+.hardware-intro {
+  margin: -12px 0 30px;
+  color: #6b7280;
+}
+
+.hardware-categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 20px;
+}
+
+.hardware-category { grid-column: span 2; }
+.hardware-category:nth-child(-n+2) { grid-column: span 1; }
+.hardware-category:nth-child(-n+2) .hardware-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.hardware-category > h3 {
+  margin: 0 0 16px;
+  color: #4b5563;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.hardware-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hardware-card.legacy-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.hardware-art {
+  background: #f3f4f6;
+}
+
+.hardware-art img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+}
+
+.hardware-card-body { padding: 18px 20px 22px; }
+
+.hardware-card-body h4 {
+  margin: 0 0 4px;
+  color: #1f2937;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.hardware-kind {
+  display: block;
+  margin-bottom: 10px;
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.hardware-projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  color: #4b5563;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.hardware-card-body p {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.hardware-card-body small {
+  display: block;
+  margin-top: 12px;
+  color: #6b7280;
+  font-size: 0.7rem;
+}
+
+.hardware-image-note {
+  margin: 20px 0 0;
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.hardware-experiments {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  color: #4b5563;
+}
+
+.hardware-experiments summary {
+  width: fit-content;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.hardware-experiments summary:focus-visible {
+  outline: 2px solid #4b5563;
+  outline-offset: 4px;
+}
+
+.hardware-experiments p { font-size: 0.85rem; }
+
+.hardware-experiment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hardware-experiment-grid h3 { margin: 8px 0 5px; font-size: 0.95rem; }
+.hardware-experiment-grid span { font-size: 0.75rem; overflow-wrap: anywhere; }
+
+@media (max-width: 1000px) {
+  .hardware-categories { grid-template-columns: minmax(0, 1fr); }
+  .hardware-category { grid-column: span 1; }
+  .hardware-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .hardware-grid, .hardware-category:nth-child(-n+2) .hardware-grid, .hardware-experiment-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
 .legacy-card {
   min-height: 100%;
   padding: 28px 24px;

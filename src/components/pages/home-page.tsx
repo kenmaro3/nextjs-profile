@@ -3,6 +3,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import { JsonLd } from '@/components/site/json-ld';
 import { SmartLink } from '@/components/site/smart-link';
 import { SponsorCTA } from '@/components/site/sponsor-cta';
+import { HardwareShelf } from '@/components/site/hardware-shelf';
 import { breadcrumbJsonLd } from '@/lib/json-ld';
 import { getCopy } from '@/lib/copy';
 import type { Locale } from '@/lib/locale';
@@ -376,6 +377,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <HardwareShelf locale={locale} />
 
       <section className="legacy-lines">
         <div className="container">
