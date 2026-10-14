@@ -21,6 +21,16 @@ export const personalProjects: {
     },
   },
   {
+    id: 'aosp',
+    title: 'AOSP / Android Platform',
+    image: '/images/projects/aosp.svg',
+    href: '/projects/aosp',
+    description: {
+      ja: ['Pixel 4 XL・i.MX 8M Plusでの実機検証', '自作HAL・カスタムセンサー・SystemUI', '遅延・電力計測と署名済みROMの生成'],
+      en: ['Hardware validation on Pixel 4 XL and i.MX 8M Plus', 'Custom HALs, sensors, and SystemUI', 'Latency and power measurements; signed ROM artifacts'],
+    },
+  },
+  {
     id: 'slam-proto',
     title: 'SLAM / slam_proto',
     image: '/images/projects/slam-proto.svg',
