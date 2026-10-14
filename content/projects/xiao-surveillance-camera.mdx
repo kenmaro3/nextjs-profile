@@ -1,0 +1,120 @@
+---
+title: "XIAO監視カメラ試作"
+slug: "xiao-surveillance-camera"
+description: "昼間の撮影・microSD保存・PIR検知を試す小さなカメラ。XIAOとレンズ付きOV5640を選定し、専用PCBとPETG試作台の設計から基板発注まで進めたプロジェクト。"
+status: "Building"
+coverImage: "/images/projects/xiao-surveillance-camera.svg"
+technologies: ["ESP32-S3", "KiCad", "PCB Design", "OV5640", "3D Printing"]
+parts: ["XIAO ESP32S3 Sense", "OV5640", "PIR", "microSD", "PETG"]
+relatedPosts: []
+publishedAt: "2026-10-14"
+updatedAt: "2026-10-14"
+draft: false
+---
+
+## 小さなカメラを製造できる設計へ
+
+人の動きをきっかけに静止画を撮影し、microSDへ保存する監視カメラを試作しています。初回はUSB給電・昼間のベンチ試作。レンズ付きカメラとXIAOのSense拡張基板を使い、撮影・保存・センサー入力を先に確かめる構成にしました。
+
+部品選定、キャリアの回路図、PCB配置・配線、製造データ、試作用ファームウェア、3Dプリント用の開放台までをつなげて設計しています。カバー画像は構成イラストです。
+
+<Callout title="PCB発注済み  実機検証はこれから">
+2026年10月にJLCPCBへキャリア基板5枚を発注しました。ERC・DRCとガーバープレビューは確認済みです。実物の組み立て、撮影、SD保存、発熱、焦点、取り付け寸法は基板到着後に検証します。
+</Callout>
+
+## PCBの製造仕様
+
+発注したのは、XIAOの端子を取り出す34 × 44 mmのキャリア基板です。XIAO、カメラ、PIRは別途取り付けます。カメラやマイコンをJLCPCBで実装した完成基板ではありません。
+
+<div className="camera-spec-table" role="region" aria-label="PCB製造仕様" tabIndex={0}>
+
+| 項目 | 仕様 |
+| --- | --- |
+| 外形・層数 | 34 × 44 mm・2層 |
+| 材料・厚さ | FR-4 TG135・1.6 mm |
+| 外層銅箔 | 1 oz |
+| 表面仕上げ | 鉛フリーHASL |
+| マスク・シルク | 緑・白 |
+| 穴 | メッキ穴18個：ヘッダ14穴＋手配線用4穴 |
+| 配線 | 裏面に4本、ビアなし |
+| 電気検査 | フライングプローブによる全数検査 |
+| 製造数・組み立て | 裸基板5枚、モジュールは手実装・手配線 |
+| 基板外形公差 | ±0.2 mm |
+
+</div>
+
+## モジュールを使った構成
+
+USB-CからXIAOへ給電し、Sense拡張基板にカメラとmicroSDを接続します。PIRの信号はキャリアの手配線用端子から入力します。キャリアには独自の充電回路やカメラ用電源回路を載せていません。
+
+<div className="camera-spec-table" role="region" aria-label="構成部品" tabIndex={0}>
+
+| 部品 | 選定仕様 | 役割 |
+| --- | --- | --- |
+| XIAO ESP32S3 Sense | Seeed SKU 113991115、Sense拡張基板・アンテナ | 撮影制御とSD保存 |
+| OV5640カメラ | Seeed SKU 114993115、レンズ・ヒートシンク付き | 昼間の静止画撮影 |
+| Grove PIR | Seeed SKU 101020020、3.3 V給電 | 人の動きの検知入力 |
+| microSD | 32 GB以下、FAT32 | JPEGの保存先 |
+| ヘッダ | 1 × 7、2.54 mmピッチを2本 | XIAOとキャリアの接続 |
+
+</div>
+
+カメラはメーカー資料で画角69度、IR-cut付きのモジュールです。水平90度や850 nm夜間撮影に対応した版としては扱っていません。XIAO付属カメラの型番は出荷時期によって異なるため、指定OV5640を受入時に確認します。
+
+## キャリアの端子接続
+
+<div className="camera-spec-table" role="region" aria-label="キャリア端子接続" tabIndex={0}>
+
+| 端子 | XIAO側 | 用途 |
+| --- | --- | --- |
+| TP1 PIR | D1 / GPIO2 / pad 2 | PIRのSIG入力 |
+| TP2 PWM | D3 / GPIO4 / pad 4 | 任意の外部ドライバー制御。現行FWはLOW固定 |
+| TP3 3V3 OUT | 3.3 V出力 / pad 12 | PIRへの給電。外部電源の注入には使わない |
+| TP4 GND | GND / pad 13 | 共通GND |
+
+</div>
+
+PIRは黄色をSIG、赤をVCC、黒をGNDへ接続し、白は未接続で絶縁します。GPIOへ5 V信号を入力せず、PWM端子でLEDを直接駆動しない構成です。D0、VBUS、BATはキャリアでは未接続です。
+
+取り付け時は基板の「D0 / 1」「5V / 14」の刻印と実物の端子表示を照合します。USBコネクタの向きだけで判断しないよう、ピン1を明示しました。
+
+## 撮影と保存の試作用ファームウェア
+
+- PIRの立上り、またはシリアルの `c` で800 × 600のJPEGを保存。
+- シリアルの `h` はOV5640のセンサーIDを確認し、1920 × 1080の代表静止画を保存。
+- 保存前にJPEG形式と実際の画像寸法を確認。
+- 一時ファイルへの書き込みサイズを確認し、成功後にJPEGへ名前を変更。
+- 起動ごとに別ディレクトリを作り、再起動での上書きを回避。
+
+Arduino ESP32 3.3.7、XIAO ESP32S3、OPI PSRAMの設定でコンパイルを確認しました。実機への書き込みと動作確認は別工程です。現行スケッチにオートフォーカス制御、音声収録、ネットワーク転送は含めていません。
+
+## PETGの開放試作台
+
+試作台は50 × 60 × 11 mm。基板の端を棚で支え、ケーブルタイで保持する構造です。上方を開放して、レンズ、SD、ヒートシンク、アンテナへのアクセスを確保します。完成した防水ケースではなく、組み立てと寸法確認のための台です。
+
+Bambu StudioでX1 Carbon・0.4 mmノズル・PETGのスライスを確認しました。0.2 mm積層、2壁、15%インフィル、サポートなしで、見積は28分24秒・8.65 g。印刷送信と実物の適合確認はこれからです。
+
+## 確認済みのことと次の検証
+
+<div className="camera-spec-table" role="region" aria-label="設計検証状況" tabIndex={0}>
+
+| 対象 | 確認済み |
+| --- | --- |
+| キャリア回路図 | KiCad ERC エラー0 |
+| キャリアPCB | DRC違反0、未接続0 |
+| 回路図とPCB | 4ネット・8接続ピンの一致 |
+| 製造データ | Gerberと穴データを独立解析、ZIPの一致を確認 |
+| JLCPCB | 2層・34 × 44 mmの解析、表裏プレビューとカート仕様の照合 |
+| 試作台 | CAD・メッシュ確認とBambu Studioのスライス |
+
+</div>
+
+次は基板の受入、無給電での端子位置の照合、組み立て、3.3 V出力の確認、撮影とSD内JPEGの照合を行います。その後PIR入力を接続し、連続撮影時の電流・温度・保存失敗数を測定します。設計チェックを通ったことと、実機で動いたことを分けて記録します。
+
+夜間撮影、電池バックアップ、プリロール、LAN再送、防水・屋外運用は次版で検討します。
+
+## メーカーの資料
+
+- [XIAO ESP32S3 Senseの仕様とピン配置](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
+- [選定したOV5640カメラとヒートシンク](https://www.seeedstudio.com/OV5640-Camera-for-XIAO-ESP32S3-Sense-With-Heat-Sink-p-5739.html)
+- [Grove PIRの仕様と配線](https://wiki.seeedstudio.com/Grove-PIR_Motion_Sensor/)

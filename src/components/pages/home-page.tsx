@@ -423,18 +423,25 @@ export async function HomePage({ locale }: { locale: Locale }) {
         <div className="container">
           <h2 className="legacy-projects-label" id="personal-projects-heading">{labels.projectsHeading}</h2>
           <div className="legacy-project-grid">
-            {personalProjects.map((project) => (
-              <article key={project.id} id={`project-${project.id}`} className="legacy-project-card" data-static="true">
-                <div className="legacy-project-image-wrap">
-                  <Image src={project.image} alt={project.title} className="legacy-project-image" width={1200} height={630} />
-                </div>
-                <div className="legacy-project-copy">
-                  <h3>{project.title}</h3>
-                  {project.description[locale].map((line) => <span key={line}>{line}</span>)}
-                  <small>{isJa ? '開発中' : 'In development'}</small>
-                </div>
-              </article>
-            ))}
+            {personalProjects.map((project) => {
+              const card = (
+                <>
+                  <div className="legacy-project-image-wrap">
+                    <Image src={project.image} alt={project.title} className="legacy-project-image" width={1200} height={630} />
+                  </div>
+                  <div className="legacy-project-copy">
+                    <h3>{project.title}</h3>
+                    {project.description[locale].map((line) => <span key={line}>{line}</span>)}
+                    <small>{project.href ? (isJa ? '取り組みの詳細を見る →' : 'View project details →') : (isJa ? '開発中' : 'In development')}</small>
+                  </div>
+                </>
+              );
+              return (
+                <article key={project.id} id={`project-${project.id}`} className="legacy-project-card" data-static={project.href ? undefined : 'true'}>
+                  {project.href ? <SmartLink href={withLocale(project.href, locale)}>{card}</SmartLink> : card}
+                </article>
+              );
+            })}
             {legacyPersonalProjects.map((project) => (
               <article key={project.title} className="legacy-project-card">
                 <SmartLink href={project.link}>

@@ -7,8 +7,19 @@ export const personalProjects: {
   id: string;
   title: string;
   image: string;
+  href?: string;
   description: ProjectCopy;
 }[] = [
+  {
+    id: 'xiao-surveillance-camera',
+    title: 'XIAO監視カメラ試作',
+    image: '/images/projects/xiao-surveillance-camera.svg',
+    href: '/projects/xiao-surveillance-camera',
+    description: {
+      ja: ['ESP32S3 Sense × OV5640 × PIR', '34 × 44 mmの専用キャリアPCB', 'PCB発注済み・実機検証待ち'],
+      en: ['ESP32S3 Sense × OV5640 × PIR', 'Custom 34 × 44 mm carrier PCB', 'PCB ordered; hardware validation pending'],
+    },
+  },
   {
     id: 'slam-proto',
     title: 'SLAM / slam_proto',

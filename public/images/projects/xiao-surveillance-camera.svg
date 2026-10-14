@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <title>XIAO監視カメラ試作の構成イメージ</title>
+  <desc>34×44mmのキャリア基板とレンズ付きカメラを示す設計イラスト。実機写真ではありません。</desc>
+  <defs>
+    <linearGradient id="bg" x2="1200" y2="630" gradientUnits="userSpaceOnUse"><stop stop-color="#101f32"/><stop offset="1" stop-color="#1f4654"/></linearGradient>
+    <linearGradient id="board" x1="665" y1="100" x2="1005" y2="543" gradientUnits="userSpaceOnUse"><stop stop-color="#276b55"/><stop offset="1" stop-color="#174b3a"/></linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" stroke="#e0f3e8" stroke-opacity=".045"/></pattern>
+  </defs>
+  <rect width="1200" height="630" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="24" fill="url(#grid)"/>
+  <g font-family="Arial, sans-serif">
+    <rect x="64" y="58" width="245" height="32" rx="16" fill="#b2e4cc"/>
+    <text x="82" y="80" fill="#153c2e" font-size="14" font-weight="700" letter-spacing="1.4">PCB ORDERED · OCT 2026</text>
+    <text x="64" y="180" fill="#f1f7f7" font-size="56" font-weight="700">XIAO CAMERA</text>
+    <text x="68" y="230" fill="#adc6ce" font-size="23">ESP32-S3 + OV5640 + PIR</text>
+    <path d="M68 269H505" stroke="#476875"/>
+    <text x="68" y="334" fill="#f1f7f7" font-size="37" font-weight="700">34 × 44 mm</text>
+    <text x="68" y="365" fill="#adc6ce" font-size="16">2 LAYERS / USB POWER / DAYLIGHT</text>
+    <g fill="#c8d8dc" font-size="17"><text x="68" y="432">Circuit &amp; PCB layout</text><text x="68" y="465">JPEG capture &amp; microSD storage</text><text x="68" y="498">PETG open bench mount</text></g>
+    <text x="68" y="580" fill="#90abb4" font-size="14">DESIGN ILLUSTRATION · HARDWARE VALIDATION PENDING</text>
+  </g>
+  <g transform="translate(665 83)">
+    <rect x="19" y="38" width="360" height="475" rx="28" fill="#071420" fill-opacity=".32"/>
+    <rect y="20" width="340" height="440" rx="10" fill="url(#board)" stroke="#6caa8e" stroke-width="2"/>
+    <g stroke="#e0b973" stroke-width="5" stroke-opacity=".45"><path d="M170 80V168M245 80L262 168M170 381L169 302M264 381L262 302"/></g>
+    <g fill="#d6b976" stroke="#fae9c2" stroke-width="1.5">
+      <circle cx="170" cy="80" r="10"/><circle cx="245" cy="80" r="10"/><circle cx="170" cy="381" r="10"/><circle cx="264" cy="381" r="10"/>
+      <circle cx="76" cy="168" r="7"/><circle cx="107" cy="168" r="7"/><circle cx="138" cy="168" r="7"/><circle cx="169" cy="168" r="7"/><circle cx="200" cy="168" r="7"/><circle cx="231" cy="168" r="7"/><circle cx="262" cy="168" r="7"/>
+      <circle cx="76" cy="302" r="7"/><circle cx="107" cy="302" r="7"/><circle cx="138" cy="302" r="7"/><circle cx="169" cy="302" r="7"/><circle cx="200" cy="302" r="7"/><circle cx="231" cy="302" r="7"/><circle cx="262" cy="302" r="7"/>
+    </g>
+    <g fill="#163d31"><circle cx="170" cy="80" r="5"/><circle cx="245" cy="80" r="5"/><circle cx="170" cy="381" r="5"/><circle cx="264" cy="381" r="5"/></g>
+    <g fill="#d9eee4" font-family="Arial,sans-serif" font-size="13"><text x="151" y="57">PWM</text><text x="233" y="57">PIR</text><text x="145" y="417">3V3</text><text x="252" y="417">GND</text><text x="28" y="442">USB ONLY / DAYLIGHT BENCH</text></g>
+    <rect x="60" y="182" width="219" height="103" rx="10" fill="#cee0dc" stroke="#eff5f3" stroke-width="2"/>
+    <rect x="78" y="198" width="73" height="70" rx="5" fill="#364f5a"/>
+    <text x="171" y="226" fill="#244454" font-family="Arial,sans-serif" font-size="18" font-weight="700">XIAO</text><text x="171" y="250" fill="#244454" font-family="Arial,sans-serif" font-size="12">ESP32S3</text>
+    <g transform="translate(73 -14)"><rect width="90" height="90" rx="14" fill="#273e49" stroke="#9fb7bd" stroke-width="2"/><circle cx="45" cy="45" r="31" fill="#0d1c2b" stroke="#a0b6be" stroke-width="4"/><circle cx="45" cy="45" r="20" fill="#254866"/><circle cx="38" cy="38" r="7" fill="#90cde0" fill-opacity=".6"/></g>
+  </g>
+</svg>
