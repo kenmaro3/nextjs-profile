@@ -21,6 +21,16 @@ export const personalProjects: {
     },
   },
   {
+    id: 'wearables',
+    title: 'Wearables / Ring · Necklace · Ankle · Watch',
+    image: '/images/projects/wearables.svg',
+    href: '/projects/wearables',
+    description: {
+      ja: ['nRF52840で4種のウェアラブルを基板から製作', '3Dプリント筐体を寸法の原本と形状検査で設計', '共通BLE仕様とiOS / Webアプリで一括管理'],
+      en: ['Four nRF52840 wearables built from the PCB up', '3D-printed enclosures generated from one dimension source with fit checks', 'Common BLE profile with iOS and web apps'],
+    },
+  },
+  {
     id: 'aosp',
     title: 'AOSP / Android Platform',
     image: '/images/projects/aosp.svg',
