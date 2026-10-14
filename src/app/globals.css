@@ -1171,6 +1171,7 @@ main {
 }
 
 .article-body {
+  min-width: 0;
   padding: 26px;
 }
 
@@ -1184,6 +1185,12 @@ main {
 .article-header {
   display: grid;
   gap: 18px;
+}
+
+.article-header h1.project-title {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .article-cover {
@@ -1203,7 +1210,7 @@ main {
   padding-top: 26px;
 }
 
-.camera-spec-table {
+:is(.camera-spec-table, .article-table) {
   overflow-x: auto;
   max-width: 100%;
   margin: 1.2rem 0;
@@ -1211,28 +1218,28 @@ main {
   border-radius: 14px;
 }
 
-.article-shell:has(.camera-spec-table) > .article-body {
+.article-shell:has(:is(.camera-spec-table, .article-table)) > .article-body {
   min-width: 0;
 }
 
-.camera-spec-table:focus-visible {
+:is(.camera-spec-table, .article-table):focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
 
-.camera-spec-table table {
+:is(.camera-spec-table, .article-table) table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.92rem;
   line-height: 1.65;
 }
 
-.camera-spec-table table:has(th:nth-child(3)) {
+:is(.camera-spec-table, .article-table) table:has(th:nth-child(3)) {
   min-width: 520px;
 }
 
 @media (max-width: 760px) {
-  .camera-spec-table:has(th:nth-child(3))::before {
+  :is(.camera-spec-table, .article-table):has(th:nth-child(3))::before {
     content: '左右にスクロールして確認できます';
     display: block;
     padding: 8px 16px;
@@ -1242,25 +1249,25 @@ main {
   }
 }
 
-.camera-spec-table th,
-.camera-spec-table td {
+:is(.camera-spec-table, .article-table) th,
+:is(.camera-spec-table, .article-table) td {
   padding: 13px 16px;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid var(--border);
 }
 
-.camera-spec-table th {
+:is(.camera-spec-table, .article-table) th {
   background: var(--surface-muted);
   color: var(--text);
   font-weight: 700;
 }
 
-.camera-spec-table tr:last-child td {
+:is(.camera-spec-table, .article-table) tr:last-child td {
   border-bottom: 0;
 }
 
-.camera-spec-table td:first-child {
+:is(.camera-spec-table, .article-table) td:first-child {
   font-weight: 600;
 }
 

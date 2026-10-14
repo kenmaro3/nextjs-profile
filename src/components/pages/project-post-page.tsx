@@ -62,7 +62,7 @@ export async function ProjectPostPage({ locale, slug }: { locale: Locale; slug: 
                 </span>
                 <span className="meta-text">{project.readingTime}</span>
               </div>
-              <h1>{project.frontmatter.title}</h1>
+              <h1 className="project-title">{project.frontmatter.title}</h1>
               <p className="article-summary">{project.frontmatter.description}</p>
               <div className="article-meta">
                 <span>

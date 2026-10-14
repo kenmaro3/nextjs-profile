@@ -15,6 +15,11 @@ function MdxLink({
 
 export const mdxComponents = {
   a: MdxLink,
+  table: ({ children, ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div className="article-table" role="region" aria-label="記事内の表" tabIndex={0}>
+      <table {...props}>{children}</table>
+    </div>
+  ),
   AffiliateCard,
   Callout,
   GitHubCard,
