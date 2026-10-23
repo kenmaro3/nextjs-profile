@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=22 <25"
+    "node": ">=24.22.1 <25"
   },
   "author": "Jaakko Kytölä <kytola.jaakko@gmail.com> (jaakkokytola.com)",
   "license": "MIT",
@@ -19,7 +19,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prebuild": "node --version"
   },
   "lint-staged": {
     "./src/**/*.{ts,js,jsx,tsx}": [
@@ -32,10 +33,10 @@
     "clsx": "^2.1.1",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
-    "next": "^16.0.0",
+    "next": "16.4.2",
     "next-mdx-remote": "^6.0.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
     "react-icons": "4.3.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
@@ -50,7 +51,7 @@
     "@types/react-dom": "^19.2.2",
     "@typescript-eslint/eslint-plugin": "4.15.1",
     "@typescript-eslint/parser": "4.15.1",
-    "commitizen": "4.3.0",
+    "commitizen": "4.3.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.20.0",
     "eslint-config-airbnb": "18.2.1",
@@ -72,6 +73,7 @@
     }
   },
   "resolutions": {
-    "@types/react": "^19.2.2"
+    "@types/react": "^19.2.2",
+    "external-editor/tmp": "0.2.7"
   }
 }
