@@ -73,7 +73,6 @@
     }
   },
   "resolutions": {
-    "@types/react": "^19.2.2",
-    "external-editor/tmp": "0.2.7"
+    "@types/react": "^19.2.2"
   }
 }

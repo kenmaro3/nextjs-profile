@@ -16,7 +16,7 @@ Node.js 24.22.1 公式 macOS arm64 バイナリを SHA256 照合してローカ�
 Vercel のマイナー・パッチ版はプラットフォーム管理。prebuild で実版をログに出力する。
 
 Next.js 10月14日告知の修正版 16.4.1 以上、Node.js 10月21日告知の修正版 24.22.1 を採用。
-既存範囲内で推移依存を更新し、commitizen は 4.3.2 に更新。external-editor の tmp は API 互換性を確認する対象として 0.2.7 に限定上書き。
+既存範囲内で推移依存を更新し、commitizen は 4.3.2 に更新。commitizen 更新により脆弱な旧 external-editor / tmp の依存経路も除去。
 JSON-LD の `<` を Unicode escape に変換し、閉じ script タグの混入を防止。
 
 ## 監査結果
